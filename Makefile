@@ -4,33 +4,20 @@ SRC = srcs/*.c
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDES = includes/ft_printf.h
-
-LIBFTDIR = libft/
-
-LFT = -lft
+INC = includes/
 
 all: $(NAME)
 
-$(NAME): $(OBJ) libft
+$(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ) && ranlib $(NAME)
 
-libft:
-	$(MAKE) -C $(LIBFTDIR)
-
 $(OBJ):
-	gcc -c $(SRC) -Wall -Werror -Wextra -L $(LIBFTDIR) $(LFT)
+	gcc -c $(SRC) -Wall -Werror -Wextra -I $(INC)
 
-clean: cleanlib
+clean:
 	/bin/rm -f $(OBJ)
 
-cleanlib:
-	$(MAKE) -C clean libft/
-
-fclean: clean fcleanlib
+fclean: clean
 	/bin/rm -f $(NAME)
-
-fcleanlib: cleanlib
-	$(MAKE) -C fclean libft/
 
 re: fclean all
