@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include <wchar.h>
 
 int	main(void)
 {
-	char	a = '1';
+	int		a = 48;
+	int		*b = &a;
 
-	printf("%hhd", a);
+	printf("%#x", (int)b);
 	return (0);
 }
