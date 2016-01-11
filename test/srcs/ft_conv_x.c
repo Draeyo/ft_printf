@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_conv_x.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 12:07:21 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 19:04:04 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/01/11 15:15:01 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/01/11 20:27:18 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr(int n)
+int		ft_conv_x(const char *format, va_list ap)
 {
-	unsigned int	nb;
+	int		i;
+	int		x;
+	char	*hex;
 
-	if (n < 0)
+	i = 0;
+	x = 0;
+	hex = ft_strnew(30);
+	if (format[i] == 'x' || format[i] == 'X')
 	{
-		ft_putchar('-');
-		n *= -1;
+		x = va_arg(ap, int);
+		hex = ft_itohex(x);
 	}
-	nb = (unsigned int)n;
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + 48);
+	if (format[i] == 'X')
+		hex = ft_strupper(hex);
+	ft_putstr(hex);
+	return (ft_strlen(hex));
 }

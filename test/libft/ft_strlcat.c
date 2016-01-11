@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 12:07:21 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 19:04:04 by vlistrat         ###   ########.fr       */
+/*   Created: 2015/11/25 12:40:00 by vlistrat          #+#    #+#             */
+/*   Updated: 2015/11/30 19:44:22 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+size_t		ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	nb;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	if (n < 0)
+	i = 0;
+	j = 0;
+	while (dst[i] && i < size)
+		i++;
+	k = i;
+	while (i < size - 1 && src[j])
 	{
-		ft_putchar('-');
-		n *= -1;
+		dst[i] = src[j];
+		i++;
+		j++;
 	}
-	nb = (unsigned int)n;
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + 48);
+	if (i < size)
+		dst[i] = '\0';
+	return (k + ft_strlen(src));
 }

@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_conv_d.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 12:07:21 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 19:04:04 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/01/11 12:17:55 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/01/11 19:14:43 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr(int n)
+int		ft_conv_d(const char *format, va_list ap)
 {
-	unsigned int	nb;
+	int				i;
+	int				d;
+	unsigned int 	ud;
 
-	if (n < 0)
+	i = 0;
+	d = 0;
+	if (format[i] == 'd' || format[i] == 'i')
 	{
-		ft_putchar('-');
-		n *= -1;
+		d = va_arg(ap, int);
+		ft_putnbr(d);
+		return (ft_nblen(d));
 	}
-	nb = (unsigned int)n;
-	if (nb >= 10)
+	else if (format[i] == 'D')
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ud = va_arg(ap, unsigned int);
+		ft_putlong(ud);
+		return (ft_nblen(ud));
 	}
-	else
-		ft_putchar(nb + 48);
+	return (0);
 }

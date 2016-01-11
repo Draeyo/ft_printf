@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vlistrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 17:22:42 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 18:56:08 by vlistrat         ###   ########.fr       */
+/*   Created: 2015/11/26 14:57:37 by vlistrat          #+#    #+#             */
+/*   Updated: 2015/12/02 14:20:54 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *format, ...)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
+	char	*copie;
 	int		i;
-	int		j;
-	va_list	ap;
 
 	i = 0;
-	j = 0;
-	va_start(ap, format);
-	while(format[i])
+	if (s)
 	{
-		if (format[i] == '%')
+		copie = ft_strnew(len);
+		if (copie == NULL)
+			return (NULL);
+		while (len > 0)
 		{
+			copie[i] = (char)s[start];
 			i++;
-			j += ft_tag(&format[i], ap);
-			i++;
+			start++;
+			len--;
 		}
-		else
-		{
-			ft_putchar(format[i]);
-			j++;
-			i++;
-		}
+		return (copie);
 	}
-	va_end(ap);
-	return (j);
+	return (NULL);
 }

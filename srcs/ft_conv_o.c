@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_conv_o.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 12:07:21 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 19:04:04 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/01/11 16:26:46 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/01/11 18:50:45 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr(int n)
+int		ft_conv_o(const char *format, va_list ap)
 {
-	unsigned int	nb;
+	int		i;
+	int		o;
 
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
-	}
-	nb = (unsigned int)n;
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + 48);
+	i = 0;
+	o = 0;
+	if (format[i] == 'o')
+		o = va_arg(ap, int);
+	o = ft_itoo(o);
+	ft_putnbr(o);
+	return (ft_nblen(o));
 }

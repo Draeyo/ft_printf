@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conv_d.c                                           :+:      :+:    :+:   */
+/*   ft_putlong.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 17:27:49 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/06 17:35:48 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/01/11 19:04:35 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/01/11 19:10:37 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		conv_d(int nb)
+void	ft_putlong(unsigned int nb)
 {
-	// return (nombre d'appels a putnbr(recursif));
+	if (nb >= 10)
+	{
+		ft_putlong(nb / 10);
+		ft_putlong(nb % 10);
+	}
+	else
+		ft_putchar(nb + 48);
 }

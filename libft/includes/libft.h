@@ -6,7 +6,7 @@
 /*   By: vlistrat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:52:32 by vlistrat          #+#    #+#             */
-/*   Updated: 2015/12/02 19:48:52 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/11 17:42:06 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,7 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-
+wchar_t				*ft_wstrcpy(wchar_t *dst, const char *src);
+void				ft_putwstr(wchar_t const *s);
+size_t				ft_wstrlen(const wchar_t *s);
 #endif

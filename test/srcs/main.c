@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 17:22:42 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 18:56:08 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/01/11 11:35:36 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/01/11 20:16:43 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+int		main(void)
 {
-	int		i;
-	int		j;
-	va_list	ap;
+	char		str[] = "HELLO";
+	int			nb = 128;
+	int			li = 4294967295;
+	wchar_t		wstr[] = L"HELLO";
+	int			i;
 
 	i = 0;
-	j = 0;
-	va_start(ap, format);
-	while(format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			j += ft_tag(&format[i], ap);
-			i++;
-		}
-		else
-		{
-			ft_putchar(format[i]);
-			j++;
-			i++;
-		}
-	}
-	va_end(ap);
-	return (j);
+	ft_printf("%d || %% || %s || %D || %d || %x || %X || %c || %o || %p\n", nb, str, li, li, li, li, 'r', nb, &nb);
+	printf("%d || %% || %s || %D || %d || %x || %X || %c || %o || %p\n", nb, str, li, li, li, li, 'r', nb, &nb);
+	printf("\n");
+	ft_printf("%S || %C\n", wstr, 'H');
+	printf("%S || %C\n", wstr, 'H');
+	return (0);
 }

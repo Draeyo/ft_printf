@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 12:07:21 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 19:04:04 by vlistrat         ###   ########.fr       */
+/*   Created: 2015/12/01 17:47:10 by vlistrat          #+#    #+#             */
+/*   Updated: 2015/12/05 14:50:52 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	unsigned int	nb;
+	t_list		*list;
 
-	if (n < 0)
+	list = *alst;
+	while (list->next)
 	{
-		ft_putchar('-');
-		n *= -1;
+		ft_lstdelone(&list, del);
+		list = (*alst)->next;
 	}
-	nb = (unsigned int)n;
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + 48);
+	ft_lstdelone(&list, del);
+	*alst = NULL;
 }

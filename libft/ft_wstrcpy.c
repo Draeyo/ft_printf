@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_wstrcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 12:07:21 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 19:04:04 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/01/11 17:30:18 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/01/11 17:39:55 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+wchar_t		*ft_wstrcpy(wchar_t *dst, const char *src)
 {
-	unsigned int	nb;
+	int		i;
 
-	if (n < 0)
+	i = 0;
+	while (src[i])
 	{
-		ft_putchar('-');
-		n *= -1;
+		dst[i] = src[i];
+		i++;
 	}
-	nb = (unsigned int)n;
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar(nb + 48);
+	dst[i] = '\0';
+	return (dst);
 }
