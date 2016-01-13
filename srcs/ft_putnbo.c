@@ -1,53 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itohex.c                                        :+:      :+:    :+:   */
+/*   ft_putnbo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 13:33:22 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/13 14:40:34 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/01/13 14:37:39 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/01/13 15:07:54 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_strrev(char *str)
-{
-	char	*buf;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = ft_strlen(str) - 1;
-	buf = ft_strnew(ft_strlen(str) - 1);
-	while (j > -1)
-		buf[i++] = str[j--];
-	return (buf);
-}
-
-
-char			*ft_itohex(unsigned int nb)
+void	ft_putnbo(unsigned int nb)
 {
 	char	*str;
 	char	*pnt;
 	int		i;
 
-	str = ft_strnew(40);
+	str = ft_strnew(20);
 	pnt = str;
 	i = 0;
-	if (nb == 0)
-		str[0] = '0';
-	while (nb != 0)
+	while (nb)
 	{
-		if (nb % 16 < 10)
-			str[i] = (nb % 16) + 48;
-		else if (nb % 16 >= 10)
-			str[i] = (nb % 16) - 10 + 97;
-		nb /= 16;
+		str[i] = (nb % 8) + 48;
+		nb /= 8;
 		i++;
 	}
 	str = ft_strrev(str);
+	ft_putstr(str);
 	free(pnt);
-	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:28:09 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 20:18:12 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/13 14:54:47 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_tag(const char *format, va_list ap)
 		j = ft_conv_x(&format[i], ap);
 	else if (format[i] == 'c')
 		j = ft_conv_c(&format[i], ap);
-	else if (format[i] == 'o')
+	else if (format[i] == 'o' || format[i] == 'O')
 		j = ft_conv_o(&format[i], ap);
 	else if (format[i] == 'p')
 		j = ft_conv_p(&format[i], ap);
@@ -41,5 +41,7 @@ int		ft_tag(const char *format, va_list ap)
 		j = ft_conv_ws(&format[i], ap);
 	else if (format[i] == 'C')
 		j = ft_conv_wc(&format[i], ap);
+	else if (format[i] == 'u' || format[i] == 'U')
+		j = ft_conv_u(&format[i], ap);
 	return (j);
 }
