@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoo.c                                          :+:      :+:    :+:   */
+/*   ft_conv_u.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 16:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/13 14:41:14 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/01/13 14:53:41 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/01/13 15:05:36 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_itoo(unsigned int nb)
+int		ft_conv_u(const char *format, va_list ap)
 {
-	unsigned int	ret;
-	int 			mult;
+	int		i;
+	int		u;
 
-	ret = 0;
-	mult = 1;
-	while (nb)
-	{
-		ret += nb % 8 * mult;
-		mult *= 10;
-		nb /= 8;
-	}
-	return (ret);
+	i = 0;
+	u = 0;
+	if (format[i] == 'u' || format[i] == 'U')
+		u = va_arg(ap, unsigned int);
+	ft_putlong(u);
+	return (ft_nblen(u));
 }

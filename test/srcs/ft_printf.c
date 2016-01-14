@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:22:42 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 18:56:08 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/13 15:26:14 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			ft_putstr(ft_get_tag(&format[i], ft_get_last(format, i)));
 			j += ft_tag(&format[i], ap);
 			i++;
 		}
