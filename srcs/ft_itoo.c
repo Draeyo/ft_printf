@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/13 14:41:14 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/14 17:36:42 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 unsigned int	ft_itoo(unsigned int nb)
 {
 	unsigned int	ret;
-	int 			mult;
+	int				mult;
 
 	ret = 0;
 	mult = 1;

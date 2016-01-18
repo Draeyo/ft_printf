@@ -6,42 +6,38 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:28:09 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/13 14:54:47 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:12:35 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-** creer code de conversion du tag ?
-*/
-
-int		ft_tag(const char *format, va_list ap)
+int		ft_tag(va_list ap, p_list *lst)
 {
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	if (format[i] == '%')
-		j = ft_noconv(&format[i]);
-	else if (format[i] == 's')
-		j = ft_conv_s(&format[i], ap);
-	else if (format[i] == 'd' || format[i] == 'i' || format[i] == 'D')
-		j = ft_conv_d(&format[i], ap);
-	else if (format[i] == 'x' || format[i] == 'X')
-		j = ft_conv_x(&format[i], ap);
-	else if (format[i] == 'c')
-		j = ft_conv_c(&format[i], ap);
-	else if (format[i] == 'o' || format[i] == 'O')
-		j = ft_conv_o(&format[i], ap);
-	else if (format[i] == 'p')
-		j = ft_conv_p(&format[i], ap);
-	else if (format[i] == 'S')
-		j = ft_conv_ws(&format[i], ap);
-	else if (format[i] == 'C')
-		j = ft_conv_wc(&format[i], ap);
-	else if (format[i] == 'u' || format[i] == 'U')
-		j = ft_conv_u(&format[i], ap);
+	if (lst->conv == '%')
+		j = ft_noconv(p_list *lst);
+	else if (lst->conv == 's')
+		j = ft_conv_s(ap, p_list *lst);
+	else if (lst->conv == 'd' || lst->conv == 'i' || lst->conv == 'D')
+		j = ft_conv_d(ap, p_list *lst);
+	else if (lst->conv == 'x' || lst->conv == 'X')
+		j = ft_conv_x(ap, p_list *lst);
+	else if (lst->conv == 'c')
+		j = ft_conv_c(ap, p_list *lst);
+	else if (lst->conv == 'o' || lst->conv == 'O')
+		j = ft_conv_o(ap, p_list *lst);
+	else if (lst->conv == 'p')
+		j = ft_conv_p(ap, p_list *lst);
+	else if (lst->conv == 'S')
+		j = ft_conv_ws(ap, p_list *lst);
+	else if (lst->conv == 'C')
+		j = ft_conv_wc(ap, p_list *lst);
+	else if (lst->conv == 'u' || lst->conv == 'U')
+		j = ft_conv_u(ap, p_list *lst);
 	return (j);
 }

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:22:42 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/13 15:26:14 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:08:46 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 int		ft_printf(const char *format, ...)
 {
-	int		i;
-	int		j;
-	va_list	ap;
+	int			i;
+	int			j;
+	va_list		ap;
+	p_list		*lst = NULL;
 
 	i = 0;
 	j = 0;
 	va_start(ap, format);
-	while(format[i])
+	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			ft_putstr(ft_get_tag(&format[i], ft_get_last(format, i)));
-			j += ft_tag(&format[i], ap);
-			i++;
+			i += ft_conv_tag(&format[i], lst);
+			j += ft_tag(ap, lst);
 		}
 		else
 		{

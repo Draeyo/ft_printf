@@ -1,9 +1,9 @@
 NAME = libftprintf.a
 
-SRC = srcs/*.c \
-	  libft/*.c
+SRC = $(wildcard srcs/*.c) \
+	  $(wildcard libft/*.c)
 
-OBJ = *.o
+OBJ = $(SRC:.c=.o)
 
 INC = includes/
 
@@ -12,8 +12,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ) && ranlib $(NAME)
 
-$(OBJ):
-	gcc -c $(SRC) -Wall -Werror -Wextra -I $(INC)
+%.o: %.c
+	gcc -c $< -o $@ -Wall -Werror -Wextra -I $(INC)
 
 clean:
 	/bin/rm -f $(OBJ)

@@ -6,27 +6,27 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 19:14:43 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:13:34 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_conv_d(const char *format, va_list ap)
+int		ft_conv_d(va_list ap, p_list *lst)
 {
 	int				i;
 	int				d;
-	unsigned int 	ud;
+	unsigned int	ud;
 
 	i = 0;
 	d = 0;
-	if (format[i] == 'd' || format[i] == 'i')
+	if (lst->conv == 'd' || format[i] == 'i')
 	{
 		d = va_arg(ap, int);
 		ft_putnbr(d);
 		return (ft_nblen(d));
 	}
-	else if (format[i] == 'D')
+	else if (lst->conv == 'D')
 	{
 		ud = va_arg(ap, unsigned int);
 		ft_putlong(ud);
