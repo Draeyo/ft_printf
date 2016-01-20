@@ -6,100 +6,109 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:35:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/18 19:35:20 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/20 16:45:07 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_get_flag(char *tag)
+int		ft_get_flag(char *tag, p_list *lst)
 {
-	char	*ret;
 	int		i;
 
-	ret = NULL;
-	while (tag[i] == '#' || tag[i] == '-' || tag[i] == '0'|| tag[i] == '+'
-			|| tag[0] == ' ')
+	i = 0;
+	while (tag[i] && (tag[i] == '#' || tag[i] == '-' || tag[i] == '0'|| tag[i] == '+'
+			|| tag[i] == ' '))
 		i++;
-	if (i == 0)
-		return (NULL);
-	ft_strsub(ret, 0, i);
-	return (ret)
+	if (i == 0 || i == (int)ft_strlen(tag))
+	{
+		lst->flag = "\0";
+		return (0);
+	}
+	else if (!ft_after_flag(tag[i]))
+		return (-1);
+	lst->flag = ft_strsub(tag, 0, i);
+	return (1);
 }
 
-int		ft_get_width(char *tag)
+int		ft_get_width(char *tag, p_list *lst)
 {
 	char	*str;
-	int		ret;
 	int		i;
 
-	str = ft_strnew(20);
-	ret = 0;
 	i = 0;
+	str = ft_strnew(20);
 	if (tag[i] != '.')
 	{
 		while (ft_isdigit(tag[i]))
 		{
-				str = tag[i];
+				str[i] = tag[i];
 				i++;
 		}
+		if (i == 0 || i == (int)ft_strlen(tag))
+			return (0);
+		else if (!ft_after_width(tag[i]))
+			return (-1);
+		lst->width = ft_atoi(str);
+		free(str);
+		return (1);
 	}
 	else
-		return (-1);
-	ret = ft_atoi(str);
-	free(str);
-	return (ret);
+		return (0);
 }
 
-int		ft_get_prec(char *tag)
+int		ft_get_prec(char *tag, p_list *lst)
 {
 	char	*str;
-	int		ret;
 	int		i;
 
 	str = ft_strnew(20);
-	ret = 0;
 	i = 0;
 	if (tag[i] == '.')
-		*tag++;
+		tag = &tag[1];
 	else
-		return (-1);
-	while (ft_isdigit(tag[i]))
-	{
-		str = tag[i];
-		i++;
-	}
-	if (i == 0)
 		return (0);
-	ret = ft_atoi(str);
+	if (!ft_isdigit(*tag))
+		return (-1);
+	while (ft_isdigit(*tag++))
+		*str++ = *tag;
+	if (!ft_after_prec(*str))
+		return (-2);
+	lst->prec = ft_atoi(str);
 	free(str);
-	return (ret);
+	return (1);
 }
 
-char	*ft_get_modif(char *tag)
+int		ft_get_modif(char *tag, p_list *lst)
 {
 	char	*str;
 	int		i;
 
 	str = ft_strnew(3);
 	i = 0;
-	while (i < 2 && (tag[i] == 'h' || tag[i] == 'l' || tag[i] == 'j'
-				|| tag[i] == 'z'))
+	if (!ft_ismod(tag[i]))
+		return (0);
+	while (i < 2 && ft_ismod(tag[i]))
 	{
 		str[i] = tag[i];
 		i++;
 	}
-	return (str);
+	if (i == 0)
+		return (0);
+	else if (!ft_isconv(tag[i]))
+		return (-1);
+	lst->modif = ft_strdup(str);
+	free(str);
+	return (1);
 }
 
-char	ft_get_conv(char *tag)
+int		ft_get_conv(char *tag, p_list *lst)
 {
-	if (format[0] == 's' || format[0] == 'S' || format[0] == 'p'
-			|| format[0] == 'd' || format[0] == 'D' || format[0] == 'i'
-			|| format[0] == 'o' || format[0] == 'O' || format[0] == 'u'
-			|| format[0] == 'U' || format[0] == 'x' || format[0] == 'X'
-			|| format[0] == 'c' || format[0] == 'C' || format[0] == '%')
-		return (format[0]);
+	if (ft_isconv(tag[0]))
+	{
+		lst->conv = tag[0];
+		return (1);
+	}
 	else
-		return ('\0');
+		return (-1);
 }

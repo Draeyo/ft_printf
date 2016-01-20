@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 11:35:36 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/13 15:19:24 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/20 19:01:05 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int		main(void)
 	int			nb = 128;
 	int			li = 4294967295;
 	wchar_t		wstr[] = L"HELLO";
+	unsigned long long	a = 9223372036854775807;
+	uintmax_t	uintmax = UINTMAX_MAX;
+	char		c = 'C';
 
 	ft_printf("--------------------\n");
 	ft_printf("%% : %%\n");
@@ -65,5 +68,18 @@ int		main(void)
 	ft_printf("p : %p || %p\n", &nb, &str);
 	printf("p : %p || %p\n", &nb, &str);
 	ft_printf("--------------------\n");
+	ft_printf("hhd : %hhd || %hhd\n", c, (char)'A');
+	printf("hhd : %hhd || %hhd\n", c, (char)'A');
+	ft_printf("--------------------\n");
+	ft_printf("hd : %hd || %hd\n", (short)32768, (short)-32769);
+	printf("hd : %hd || %hd\n", (short)32768, (short)-32769);
+	ft_printf("--------------------\n");
+	printf("UINT_MAX : %D\n", UINT_MAX);
+	printf("LONG_MAX : %ld\n", LONG_MAX);
+	printf("LONG_MAX : %llU || %lu\n", a + 1, sizeof(a));
+	printf("ULONG_MAX : %lu\n", ULONG_MAX);
+	printf("LLONG_MAX : %lld\n", LLONG_MAX);
+	printf("ULLONG_MAX : %llu\n", ULLONG_MAX);
+	printf("uintmax_t : %ju", uintmax);
 	return (0);
 }

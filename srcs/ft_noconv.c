@@ -6,15 +6,15 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:41:38 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 18:56:27 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/20 12:21:57 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_noconv(const char *format)
+int		ft_noconv(p_list *lst)
 {
-	if (format[0] == '%')
+	if (lst->conv == '%')
 		ft_putchar('%');
 	return (1);
 }

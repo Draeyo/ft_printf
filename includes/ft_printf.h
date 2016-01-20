@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/18 20:12:22 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/20 19:08:36 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <wchar.h>
+# include <limits.h>
 # include "libft.h"
 
 # define DEBUG ft_putendl("DEBUG");
@@ -63,6 +64,7 @@ void			ft_putlong(unsigned int nb);
 char			*ft_strupper(char *str);
 char			*ft_strrev(char *str);
 int				ft_nblen(int nb);
+void			lst_init(p_list *lst);
 
 /* strsub du % au tag de conversion */
 int				ft_get_last(const char *format, int i);
@@ -70,10 +72,18 @@ char			*ft_get_tag(const char *format, int last);
 
 /* recuperation du tag dans la structure */
 int				ft_conv_tag(const char *format, p_list *lst);
-char			*ft_get_flag(char *tag);
-char			*ft_get_width(char *tag);
-char			*ft_get_prec(char *tag);
-char			*ft_get_modif(char *tag);
-char			*ft_get_conv(char *tag);
+int				ft_get_flag(char *tag, p_list *lst);
+int				ft_get_width(char *tag, p_list *lst);
+int				ft_get_prec(char *tag, p_list *lst);
+int				ft_get_modif(char *tag, p_list *lst);
+int				ft_get_conv(char *tag, p_list *lst);
+
+/* verifications du flag */
+int				ft_isconv(int c);
+int				ft_ismod(int c);
+int				ft_validmod(char *str);
+int				ft_after_flag(int c);
+int				ft_after_width(int c);
+int				ft_after_prec(int c);
 
 #endif
