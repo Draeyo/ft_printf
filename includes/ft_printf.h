@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 16:34:21 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/21 17:28:41 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ unsigned int	ft_itoo(unsigned int nb);
 unsigned long long		ft_lltoo(unsigned long long nb);
 char			*ft_uitoa(unsigned int n);
 char			*ft_itohex(unsigned int nb);
-char			*ft_itohex(unsigned long long nb);
+char			*ft_lltohex(unsigned long long nb);
 
 /* Utilitaires */
 void			ft_putnbo(unsigned int nb);

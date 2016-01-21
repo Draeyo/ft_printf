@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:58:48 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/18 20:22:53 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/21 18:01:17 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int		ft_conv_ws(va_list ap, p_list *lst)
 {
-	int			i;
 	wchar_t		*wstr;
 
-	i = 0;
 	wstr = (wchar_t*)malloc(sizeof(*wstr) * 50);
-	if (lst->conv == 'S')
+	if ((lst->modif == NULL && lst->conv == 'S') 
+			|| (ft_strstr(lst->modif, "l") && lst->conv == 's'))
 		wstr = va_arg(ap, wchar_t*);
 	ft_putwstr(wstr);
 	return (ft_wstrlen(wstr));
@@ -27,15 +26,14 @@ int		ft_conv_ws(va_list ap, p_list *lst)
 
 int		ft_conv_wc(va_list ap, p_list *lst)
 {
-	int			i;
 	wint_t		wint;
 	wchar_t		wbuf;
 
-	i = 0;
 	wint = 0;
-	if (lst->conv == 'C')
+	if ((lst->modif == NULL && lst->conv == 'C') 
+			|| (ft_strstr(lst->modif, "l") && lst->conv == 'c'))
 		wint = va_arg(ap, wint_t);
 	wbuf = wint;
 	write(1, &wbuf, 4);
-	return (1);
+	return (4);
 }

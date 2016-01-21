@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:35:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/20 16:45:07 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/21 17:56:31 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_get_width(char *tag, p_list *lst)
 
 	i = 0;
 	str = ft_strnew(20);
-	if (tag[i] != '.')
+	if (tag[i] != '.' && ft_isdigit(tag[i]))
 	{
 		while (ft_isdigit(tag[i]))
 		{
@@ -48,13 +48,13 @@ int		ft_get_width(char *tag, p_list *lst)
 		if (i == 0 || i == (int)ft_strlen(tag))
 			return (0);
 		else if (!ft_after_width(tag[i]))
-			return (-1);
+			return (-2);
 		lst->width = ft_atoi(str);
 		free(str);
 		return (1);
 	}
 	else
-		return (0);
+		return (-1);
 }
 
 int		ft_get_prec(char *tag, p_list *lst)
@@ -64,10 +64,10 @@ int		ft_get_prec(char *tag, p_list *lst)
 
 	str = ft_strnew(20);
 	i = 0;
-	if (tag[i] == '.')
-		tag = &tag[1];
-	else
+	if (tag[i] != '.')
 		return (0);
+	else
+		tag = &tag[1];
 	if (!ft_isdigit(*tag))
 		return (-1);
 	while (ft_isdigit(*tag++))

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:26:46 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 16:47:07 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/21 17:38:04 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static int	ft_conv_ho(va_list ap, p_list *lst)
 	if (ft_strstr(lst->modif, "hh"))
 	{
 		hho = va_arg(ap, unsigned int);
-		hho = itoo(hho);
+		hho = ft_itoo(hho);
 		ft_putlong(hho);
 		return (ft_unblen(hho));
 	}
 	else if (ft_strstr(lst->modif, "h"))
 	{
-		ho = va_arg(ap, unsigned short);
+		ho = va_arg(ap, unsigned int);
 		hho = ft_itoo(ho);
 		ft_putlong(hho);
 		return (ft_unblen(hho));

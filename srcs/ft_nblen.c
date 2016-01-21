@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 18:56:38 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 15:21:47 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/21 17:29:38 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		ft_unblen(unsigned int nb)
 		return (1);
 	while (nb)
 	{
-		nb \= 10;
+		nb /= 10;
 		i++;
 	}
 	return (i);
@@ -64,7 +64,7 @@ int		ft_llnblen(long long nb)
 		return (1);
 	while (nb)
 	{
-		nb \= 10;
+		nb /= 10;
 		i++;
 	}
 	return (i);

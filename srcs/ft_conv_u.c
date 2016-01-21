@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 14:53:41 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 16:37:30 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/21 17:38:51 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		ft_conv_hu(va_list ap, p_list *lst)
 	}
 	else if (ft_strstr(lst->modif, "h"))
 	{
-		hu = va_arg(ap, unsigned short);
+		hu = va_arg(ap, unsigned int);
 		ft_putnbr(hu);
 		return (ft_nblen(hu));
 	}
@@ -70,7 +70,7 @@ int		ft_conv_u(va_list ap, p_list *lst)
 	}
 	else if ((count = ft_conv_hu(ap, lst)) > 0)
 		return (count);
-	else if ((coutn = ft_conv_lu(ap, lst)) > 0)
+	else if ((count = ft_conv_lu(ap, lst)) > 0)
 		return (count);
 	return (ft_nblen(u));
 }

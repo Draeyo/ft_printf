@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:33:22 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 16:22:40 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/21 17:41:04 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char		*ft_itohex(unsigned int nb)
 	return (str);
 }
 
-char		*ft_llohex(unsigned long long nb)
+char		*ft_lltohex(unsigned long long nb)
 {
 	char	*str;
 	char	*pnt;
