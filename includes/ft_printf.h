@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/20 19:08:36 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/01/21 16:34:21 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,20 @@ int				ft_noconv(p_list *lst);
 
 /* conversions divers */
 unsigned int	ft_itoo(unsigned int nb);
+unsigned long long		ft_lltoo(unsigned long long nb);
 char			*ft_uitoa(unsigned int n);
 char			*ft_itohex(unsigned int nb);
+char			*ft_itohex(unsigned long long nb);
 
 /* Utilitaires */
 void			ft_putnbo(unsigned int nb);
-void			ft_putlong(unsigned int nb);
+void			ft_putlong(unsigned long long nb);
+void			ft_put_unsigned_int(unsigned int nb);
 char			*ft_strupper(char *str);
 char			*ft_strrev(char *str);
 int				ft_nblen(int nb);
+int				ft_unblen(unsigned int nb);
+int				ft_llnblen(long long nb);
 void			lst_init(p_list *lst);
 
 /* strsub du % au tag de conversion */
