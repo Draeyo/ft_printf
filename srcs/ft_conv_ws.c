@@ -20,7 +20,7 @@ int		ft_conv_ws(va_list ap, p_list *lst)
 	if ((lst->modif == NULL && lst->conv == 'S') 
 			|| (ft_strstr(lst->modif, "l") && lst->conv == 's'))
 		wstr = va_arg(ap, wchar_t*);
-	ft_putwstr(wstr);
+	ft_putwstr_fd(wstr, 1);
 	return (ft_wstrlen(wstr));
 }
 
@@ -34,6 +34,6 @@ int		ft_conv_wc(va_list ap, p_list *lst)
 			|| (ft_strstr(lst->modif, "l") && lst->conv == 'c'))
 		wint = va_arg(ap, wint_t);
 	wbuf = wint;
-	write(1, &wbuf, 4);
+	ft_putwchar_fd(wbuf, 1);
 	return (4);
 }

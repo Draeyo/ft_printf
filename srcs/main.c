@@ -17,7 +17,7 @@ int		main(void)
 	char		str[] = "HELLO";
 	int			nb = 128;
 	int			li = 4294967295;
-	wchar_t		wstr[] = L"HELLO";
+	wchar_t		wstr[] = L"猫δ요莨ي";
 	unsigned long long	a = 9223372036854775807;
 	uintmax_t	uintmax = UINTMAX_MAX;
 	char		c = 'C';
@@ -30,7 +30,7 @@ int		main(void)
 	printf("s : %s\n", str);
 	ft_printf("--------------------\n");
 	ft_printf("S : %S\n", wstr);
-	printf("S : %S\n", wstr);
+//	printf("S : %S\n", wstr);
 	ft_printf("--------------------\n");
 	ft_printf("D : %D || %D\n", li, nb);
 	printf("D : %D || %D\n", li, nb);
@@ -50,8 +50,8 @@ int		main(void)
 	ft_printf("c : '%c' || '%c'\n", 'r', 65);
 	printf("c : '%c' || '%c'\n", 'r', 65);
 	ft_printf("--------------------\n");
-	ft_printf("C : %C\n", 'H');
-	printf("C : %C\n", 'H');
+	ft_printf("C : %C || %C || %C || %C || %C\n", L'猫', L'δ', L'요', L'莨', L'ي');
+//	printf("C : %C || %C || %C || %C || %C\n", L'猫', L'δ', L'요', L'莨', L'ي');
 	ft_printf("--------------------\n");
 	ft_printf("o : %o || %o\n", nb, li);
 	printf("o : %o || %o\n", nb, li);

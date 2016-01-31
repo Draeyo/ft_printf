@@ -16,10 +16,9 @@ static char		*ft_ox(p_list *lst, char *hex)
 {
 	char	*str;
 
-	str = NULL;
+	str = ft_strnew(40);
 	if (ft_strchr(lst->tag, '#'))
 	{
-		str = ft_strnew(40);
 		str[0] = '0';
 		str[1] = 'x';
 		str = ft_strjoin(str, hex);
@@ -27,6 +26,8 @@ static char		*ft_ox(p_list *lst, char *hex)
 			str = ft_strupper(str);
 		return (str);
 	}
+	if (lst->conv == 'X')
+		hex = ft_strupper(hex);
 	return (hex);
 }
 
@@ -99,7 +100,7 @@ int		ft_conv_x(va_list ap, p_list *lst)
 	{
 		x = va_arg(ap, int);
 		hex = ft_itohex(x);
-		hex = ft_ox(lst, hex); 
+		hex = ft_ox(lst, hex);
 		ft_putstr(hex);
 	}
 	else if ((count = ft_conv_hx(ap, lst, hex)) > 0)

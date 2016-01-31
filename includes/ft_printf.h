@@ -70,7 +70,8 @@ int				ft_nblen(int nb);
 int				ft_unblen(unsigned int nb);
 int				ft_llnblen(long long nb);
 void			lst_init(p_list *lst);
-
+void			ft_putwchar_fd(wchar_t c, int fd);
+void			ft_putwstr_fd(wchar_t *wstr, int fd);
 /* strsub du % au tag de conversion */
 int				ft_get_last(const char *format, int i);
 char			*ft_get_tag(const char *format, int last);
@@ -90,5 +91,10 @@ int				ft_validmod(char *str);
 int				ft_after_flag(int c);
 int				ft_after_width(int c);
 int				ft_after_prec(int c);
+
+/* Options */
+char				*ft_width(p_list *lst, int len);
+char				*ft_prec(p_list *lst, int len);
+char				*ft_padding(char *width, char *prec);
 
 #endif
