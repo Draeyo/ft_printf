@@ -1,19 +1,35 @@
 #include "ft_printf.h"
 
+static char		*ft_strnew_digit(int nb, int fill)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = (char*)malloc(sizeof(*str) * (nb + 1));
+	while(nb--)
+	{
+		str[i] = fill;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
 char	*ft_width(p_list *lst, int len)
 {
 	char	*width;
 	int		i;
 
-	i = 0;
-	if (len - lst->width <= 0)
+	if (lst->width <= 0)
 		return (NULL);
+	i = 0;
 	if (lst->prec)
 		lst->width -= lst->prec;
-	if (!(width = ft_strnew(lst->width)))
+	else if ((lst->width -= len) <= 0)
 		return (NULL);
-	while(width[i++])
-		width[i] = ' ';
+	if (!(width = ft_strnew_digit(lst->width, ' ')))
+		return (NULL);
 	return (width);
 }
 
@@ -23,19 +39,24 @@ char	*ft_prec(p_list *lst, int len)
 	int		i;
 
 	i = 0;
-	if (len - lst->prec <= 0)
+	if ((lst->prec -= len) <= 0)
 		return (NULL);
-	prec = ft_strnew(lst->prec);
-	while(prec[i++])
-		prec[i] = '0';
+	prec = ft_strnew_digit(lst->prec, '0');
 	return (prec);
 }
 
-char	*ft_padding(char *width, char *prec)
+char	*ft_padding(char *width, char *prec, char *elem, p_list *lst)
 {
 	char	*padding;
 
-	if (!(padding = ft_strjoin(width, prec)))
-		return (NULL);
+	padding = NULL;
+	if (prec && (lst->conv == 'd' || lst->conv == 'D' || lst->conv == 'i'))
+		padding = ft_strjoin(prec, elem);
+	else
+		padding = ft_strnewcpy(elem);
+	if (width && !ft_strchr(lst->tag, '-'))
+		padding = ft_strjoin(width, padding);
+	else if (width && ft_strchr(lst->tag, '-'))
+		padding = ft_strjoin(padding, width);
 	return (padding);
 }

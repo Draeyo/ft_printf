@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 13:21:53 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/20 15:23:32 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/09 16:18:05 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_after_prec(int c)
 {
-	if (!ft_ismod(c) || !ft_isconv(c))
+	if (!ft_ismod(c) && !ft_isconv(c))
 		return (0);
 	return (1);
 }

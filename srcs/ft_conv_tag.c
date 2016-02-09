@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 16:14:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 17:58:51 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/09 16:44:56 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int				ft_conv_tag(const char *format, p_list *lst)
 	else if (lst->prec == -1)
 		k++;
 	else if (lst->prec > 0)
-		k += ft_nblen(lst->prec);
+		k += ft_nblen(lst->prec) + 1;
 	if (ft_get_modif(lst->tag + k, lst) < 0)
 		exit(EXIT_FAILURE);
 	else if (lst->modif)

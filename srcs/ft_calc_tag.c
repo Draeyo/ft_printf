@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:35:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 17:56:31 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/09 16:44:42 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,12 @@ int		ft_get_prec(char *tag, p_list *lst)
 		tag = &tag[1];
 	if (!ft_isdigit(*tag))
 		return (-1);
-	while (ft_isdigit(*tag++))
-		*str++ = *tag;
-	if (!ft_after_prec(*str))
+	while (ft_isdigit(tag[i]))
+	{
+		str[i] = tag[i];
+		i++;
+	}
+	if (!ft_after_prec(tag[i]))
 		return (-2);
 	lst->prec = ft_atoi(str);
 	free(str);

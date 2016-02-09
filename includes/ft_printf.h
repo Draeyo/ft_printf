@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 17:28:41 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/09 16:53:04 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ unsigned long long		ft_lltoo(unsigned long long nb);
 char			*ft_uitoa(unsigned int n);
 char			*ft_itohex(unsigned int nb);
 char			*ft_lltohex(unsigned long long nb);
+int 			ft_s_atoi(char *str);
+long			ft_s_atol(char *str);
+char			*ft_s_itoa(int nb);
+char			*ft_s_ltoa(long nb);
 
 /* Utilitaires */
 void			ft_putnbo(unsigned int nb);
@@ -72,6 +76,8 @@ int				ft_llnblen(long long nb);
 void			lst_init(p_list *lst);
 void			ft_putwchar_fd(wchar_t c, int fd);
 void			ft_putwstr_fd(wchar_t *wstr, int fd);
+char			*ft_strnewcpy(char *str);
+
 /* strsub du % au tag de conversion */
 int				ft_get_last(const char *format, int i);
 char			*ft_get_tag(const char *format, int last);
@@ -95,6 +101,6 @@ int				ft_after_prec(int c);
 /* Options */
 char				*ft_width(p_list *lst, int len);
 char				*ft_prec(p_list *lst, int len);
-char				*ft_padding(char *width, char *prec);
+char				*ft_padding(char *width, char *prec, char *elem, p_list *lst);
 
 #endif

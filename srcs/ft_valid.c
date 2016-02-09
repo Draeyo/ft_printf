@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 12:59:01 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/20 15:23:59 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/09 16:49:04 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int		ft_validmod(char *str)
 
 int		ft_after_flag(int c)
 {
-	if (!ft_isdigit(c) || c != '.' || !ft_ismod(c) || !ft_isconv(c))
+	if (!ft_isdigit(c) && (char)c != '.' && !ft_ismod(c) && !ft_isconv(c))
 		return (0);
 	return (1);
 }
 
 int		ft_after_width(int c)
 {
-	if (c != '.' || !ft_ismod(c) || !ft_isconv(c))
+	if ((char)c != '.' && !ft_ismod(c) && !ft_isconv(c))
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 11:35:36 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/20 19:29:46 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/09 16:51:07 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int		main(void)
 {
-	char		str[] = "HELLO";
+/*	char		str[] = "HELLO";
 	int			nb = 128;
 	int			li = 4294967295;
 	wchar_t		wstr[] = L"猫δ요莨ي";
 	unsigned long long	a = 9223372036854775807;
 	uintmax_t	uintmax = UINTMAX_MAX;
-	char		c = 'C';
-
+	char		c = 'C';*/
+/*
 	ft_printf("--------------------\n");
 	ft_printf("%% : %%\n");
 	printf("%% : %%\n");
@@ -80,6 +80,7 @@ int		main(void)
 	printf("ULONG_MAX : %lu\n", ULONG_MAX);
 	printf("LLONG_MAX : %lld\n", LLONG_MAX);
 	printf("ULLONG_MAX : %llu\n", ULLONG_MAX);
-	printf("uintmax_t : %ju", uintmax);
+	printf("uintmax_t : %ju", uintmax);*/
+	ft_printf("%-50.10d", 123);
 	return (0);
 }
