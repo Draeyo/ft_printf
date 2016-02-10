@@ -39,6 +39,10 @@ char	*ft_prec(p_list *lst, int len)
 	int		i;
 
 	i = 0;
+	if (lst->conv == 'p')
+		return(NULL);
+	else if (lst->conv == 's')
+		return (ft_strnew_digit(lst->prec, ' '));
 	if ((lst->prec -= len) <= 0)
 		return (NULL);
 	prec = ft_strnew_digit(lst->prec, '0');
@@ -50,8 +54,10 @@ char	*ft_padding(char *width, char *prec, char *elem, p_list *lst)
 	char	*padding;
 
 	padding = NULL;
-	if (prec && (lst->conv == 'd' || lst->conv == 'D' || lst->conv == 'i'))
+	if (prec && lst->conv != 's')
 		padding = ft_strjoin(prec, elem);
+	else if (lst->prec && lst->conv == 's')
+		padding = ft_strcut(elem, lst->prec);
 	else
 		padding = ft_strnewcpy(elem);
 	if (width && !ft_strchr(lst->tag, '-'))

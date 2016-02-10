@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 14:37:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/13 15:07:54 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/10 16:30:34 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbo(unsigned int nb)
+char	*ft_putnbo(unsigned int nb)
 {
 	char	*str;
 	char	*pnt;
@@ -28,6 +28,5 @@ void	ft_putnbo(unsigned int nb)
 		i++;
 	}
 	str = ft_strrev(str);
-	ft_putstr(str);
-	free(pnt);
+	return (str);
 }

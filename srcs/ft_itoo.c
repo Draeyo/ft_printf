@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 16:20:17 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/10 16:30:39 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ unsigned int	ft_itoo(unsigned int nb)
 	return (ret);
 }
 
-unsigned long long		ft_lltoo(unsigned long long nb)
+char		*ft_lltoo(unsigned long long nb)
 {
-	unsigned long long 	ret;
-	int					mult;
+	int		mult;
+	char	*ret;
 
-	ret = 0;
+	ret = ft_strnew(200);
 	mult = 1;
 	while (nb)
 	{
-		ret += nb % 8 * mult;
-		mult *= 10;
+		ret = ft_strjoin(ret, ft_s_itoa((nb % 8 * mult)));
 		nb /= 8;
 	}
+	ret = ft_strrev(ret);
 	return (ret);
 }

@@ -60,7 +60,7 @@ char	*ft_s_ltoa(long nb)
 	}
 	else if (nb == 0)
 		return ("0");
-	while (len--)
+	while (len-- && div)
 	{
 		ret[i] = ((nb / div) + 48);
 		nb -= ((nb / div) * div);

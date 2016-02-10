@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_s.c                                        :+:      :+:    :+:   */
+/*   ft_strcut.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 12:27:45 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/10 17:15:31 by vlistrat         ###   ########.fr       */
+/*   Created: 2015/11/26 11:53:36 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/02/10 17:08:12 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_conv_s(va_list ap, p_list *lst)
+char	*ft_strcut(char *str, int n)
 {
-	char	*s;
+	int		i;
+	char	*ret;
 
-	s = NULL;
-	if (lst->conv == 's')
+	i = 0;
+	ret = ft_strnew(ft_strlen(str) + n);
+	while (str[i] && i < n)
 	{
-		s = va_arg(ap, char*);
-		ft_putstr(ft_padding(ft_width(lst, ft_strlen(s)), ft_prec(lst, ft_strlen(s)), s, lst));
+		ret[i] = str[i];
+		i++;
 	}
-	else if ((lst->modif != NULL && ft_strstr(lst->modif, "l")) || lst->conv == 'S')
-		return (ft_conv_ws(ap, lst));
-	return (ft_strlen(s));
+	return (ret);
 }

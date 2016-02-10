@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/09 15:44:01 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/10 15:20:59 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 static int		ft_conv_hd(va_list ap, p_list *lst)
 {
-	int		c;
-	int		s;
+	char		c;
+	short		s;
 
 	if (ft_strstr(lst->modif, "hh") && (lst->conv == 'd' || lst->conv == 'i'))
 	{
 		c = va_arg(ap, int);
-		//ft_putnbr(c);
 		ft_putstr(ft_padding(ft_width(lst, ft_strlen(ft_s_itoa(c))), ft_prec(lst, ft_strlen(ft_s_itoa(c))), ft_s_itoa(c), lst));
 		return (1);
 	}
 	else if (ft_strstr(lst->modif, "h") && (lst->conv == 'd' || lst->conv == 'i'))
 	{
 		s = va_arg(ap, int);
-		//ft_putnbr(s);
 		ft_putstr(ft_padding(ft_width(lst, ft_strlen(ft_s_itoa(s))), ft_prec(lst, ft_strlen(ft_s_itoa(s))), ft_s_itoa(s), lst));
 		return (ft_nblen(s));
 	}
@@ -44,14 +42,12 @@ static int		ft_conv_ld(va_list ap, p_list *lst)
 	if (ft_strstr(lst->modif, "ll") && (lst->conv == 'd' || lst->conv == 'i'))
 	{
 		lld = va_arg(ap, long long);
-		//ft_putlong(lld);
 		ft_putstr(ft_padding(ft_width(lst, ft_strlen(ft_s_ltoa(lld))), ft_prec(lst, ft_strlen(ft_s_ltoa(lld))), ft_s_ltoa(lld), lst));
 		return (ft_llnblen(lld));
 	}
 	else if (ft_strstr(lst->modif, "l") && (lst->conv == 'd' || lst->conv == 'i'))
 	{
 		ld = va_arg(ap, long);
-		//ft_putlong(ld);
 		ft_putstr(ft_padding(ft_width(lst, ft_strlen(ft_s_ltoa(ld))), ft_prec(lst, ft_strlen(ft_s_ltoa(ld))), ft_s_ltoa(ld), lst));
 		return (ft_nblen(ld));
 	}
@@ -70,14 +66,12 @@ int		ft_conv_d(va_list ap, p_list *lst)
 	if (lst->modif == NULL && (lst->conv == 'd' || lst->conv == 'i'))
 	{
 		d = va_arg(ap, int);
-		//ft_putnbr(d);
 		ft_putstr(ft_padding(ft_width(lst, ft_strlen(ft_s_itoa(d))), ft_prec(lst, ft_strlen(ft_s_itoa(d))), ft_s_itoa(d), lst));
 		return (ft_nblen(d));
 	}
 	else if (lst->modif == NULL && lst->conv == 'D')
 	{
 		ud = va_arg(ap, unsigned int);
-	//	ft_putlong(ud);
 		ft_putstr(ft_padding(ft_width(lst, ft_strlen(ft_s_ltoa(ud))), ft_prec(lst, ft_strlen(ft_s_ltoa(ud))), ft_s_ltoa(ud), lst));
 		return (ft_unblen(ud));
 	}

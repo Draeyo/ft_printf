@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/09 16:53:04 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/10 17:08:44 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int				ft_noconv(p_list *lst);
 
 /* conversions divers */
 unsigned int	ft_itoo(unsigned int nb);
-unsigned long long		ft_lltoo(unsigned long long nb);
+char					*ft_lltoo(unsigned long long nb);
 char			*ft_uitoa(unsigned int n);
 char			*ft_itohex(unsigned int nb);
 char			*ft_lltohex(unsigned long long nb);
@@ -65,7 +65,7 @@ char			*ft_s_itoa(int nb);
 char			*ft_s_ltoa(long nb);
 
 /* Utilitaires */
-void			ft_putnbo(unsigned int nb);
+char			*ft_putnbo(unsigned int nb);
 void			ft_putlong(unsigned long long nb);
 void			ft_put_unsigned_int(unsigned int nb);
 char			*ft_strupper(char *str);
@@ -77,6 +77,7 @@ void			lst_init(p_list *lst);
 void			ft_putwchar_fd(wchar_t c, int fd);
 void			ft_putwstr_fd(wchar_t *wstr, int fd);
 char			*ft_strnewcpy(char *str);
+char			*ft_strcut(char *str, int n);
 
 /* strsub du % au tag de conversion */
 int				ft_get_last(const char *format, int i);
