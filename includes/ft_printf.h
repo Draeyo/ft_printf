@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/10 17:08:44 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/15 16:09:58 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,9 @@ char			*ft_lltohex(unsigned long long nb);
 int 			ft_s_atoi(char *str);
 long			ft_s_atol(char *str);
 char			*ft_s_itoa(int nb);
+char			*ft_s_uitoa(unsigned int nb);
 char			*ft_s_ltoa(long nb);
+char			*ft_s_lltoa(unsigned long long);
 
 /* Utilitaires */
 char			*ft_putnbo(unsigned int nb);
@@ -73,6 +75,7 @@ char			*ft_strrev(char *str);
 int				ft_nblen(int nb);
 int				ft_unblen(unsigned int nb);
 int				ft_llnblen(long long nb);
+int				ft_ullnblen(unsigned long long nb);
 void			lst_init(p_list *lst);
 void			ft_putwchar_fd(wchar_t c, int fd);
 void			ft_putwstr_fd(wchar_t *wstr, int fd);

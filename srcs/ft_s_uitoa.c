@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conv_c.c                                        :+:      :+:    :+:   */
+/*   ft_s_uitoa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 15:40:06 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/15 14:36:14 by vlistrat         ###   ########.fr       */
+/*   Created: 2016/02/15 16:08:57 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/02/15 16:12:50 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_conv_c(va_list ap, p_list *lst)
-{
-	char	c;
-	char	*cstr;
 
-	c = 0;
-	cstr = ft_strnew(1);
-	if (lst->conv == 'c')
+static int		calc_div(int len)
+{
+	int		div;
+
+	div = 1;
+	while (--len)
+		div *= 10;
+	return (div);
+}
+
+char	*ft_s_uitoa(unsigned int nb)
+{
+	int		div;
+	char	*ret;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_unblen(nb);
+	div = calc_div(len);
+	ret = ft_strnew(len + 1);
+	if (nb == 0)
+		return ("0");
+	while (len--)
 	{
-		c = va_arg(ap, int);
-		cstr[0] = c;
-	//	ft_putchar(c);
-		ft_putstr(ft_padding(ft_width(lst, 1), ft_prec(lst, 1), cstr, lst));
+		ret[i] = ((nb / div) + 48);
+		nb -= ((nb / div) * div);
+		div /= 10;
+		i++;
 	}
-	else if ((lst->modif != NULL && ft_strstr(lst->modif, "l")) || lst->conv == 'C')
-		return (ft_conv_wc(ap, lst));
-	return (1);
+	return (ret);
 }

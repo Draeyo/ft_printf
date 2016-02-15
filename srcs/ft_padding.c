@@ -24,6 +24,10 @@ char	*ft_width(p_list *lst, int len)
 	if (lst->width <= 0)
 		return (NULL);
 	i = 0;
+	if (lst->prec < len)
+		lst->prec = 0;
+	if (lst->prec > lst->width)
+		return (NULL);
 	if (lst->prec)
 		lst->width -= lst->prec;
 	else if ((lst->width -= len) <= 0)
@@ -39,7 +43,7 @@ char	*ft_prec(p_list *lst, int len)
 	int		i;
 
 	i = 0;
-	if (lst->conv == 'p')
+	if (lst->conv == 'p' || lst->conv == 'c')
 		return(NULL);
 	else if (lst->conv == 's')
 		return (ft_strnew_digit(lst->prec, ' '));
