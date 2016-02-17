@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 12:59:01 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/09 16:49:04 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/17 17:18:40 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_ismod(int c)
 int		ft_validmod(char *str)
 {
 	if (str[0] == 'h' && str[1] == 'h' && str[2] == '\0')
-		return(1);
+		return (1);
 	else if (str[0] == 'l' && str[1] == 'l' && str[2] == '\0')
 		return (1);
 	else if ((str[0] == 'h' || str[0] == 'l' || str[0] == 'j' || str[0] == 'z')

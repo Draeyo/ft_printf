@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/10 16:30:39 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/17 17:07:26 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ unsigned int	ft_itoo(unsigned int nb)
 	return (ret);
 }
 
-char		*ft_lltoo(unsigned long long nb)
+char			*ft_lltoo(unsigned long long nb)
 {
 	int		mult;
 	char	*ret;

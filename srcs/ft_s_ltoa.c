@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_s_ltoa.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/17 17:16:09 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/02/17 17:16:44 by vlistrat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int		ft_lnblen(long nb)
@@ -26,7 +38,7 @@ static int		calc_len(long nb)
 
 	len = 0;
 	if (nb < 0)
-		return((len = ft_lnblen(nb) - 1));
+		return ((len = ft_lnblen(nb) - 1));
 	else
 		return ((len = ft_lnblen(nb)));
 }
@@ -41,7 +53,7 @@ static int		calc_div(int len)
 	return (div);
 }
 
-char	*ft_s_ltoa(long nb)
+char			*ft_s_ltoa(long nb)
 {
 	int		div;
 	char	*ret;

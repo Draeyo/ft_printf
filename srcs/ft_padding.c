@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_padding.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/02/17 17:10:58 by vlistrat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static char		*ft_strnew_digit(int nb, int fill)
@@ -7,7 +19,7 @@ static char		*ft_strnew_digit(int nb, int fill)
 
 	i = 0;
 	str = (char*)malloc(sizeof(*str) * (nb + 1));
-	while(nb--)
+	while (nb--)
 	{
 		str[i] = fill;
 		i++;
@@ -16,7 +28,7 @@ static char		*ft_strnew_digit(int nb, int fill)
 	return (str);
 }
 
-char	*ft_width(p_list *lst, int len)
+char			*ft_width(p_list *lst, int len)
 {
 	char	*width;
 	int		i;
@@ -37,14 +49,14 @@ char	*ft_width(p_list *lst, int len)
 	return (width);
 }
 
-char	*ft_prec(p_list *lst, int len)
+char			*ft_prec(p_list *lst, int len)
 {
 	char	*prec;
 	int		i;
 
 	i = 0;
 	if (lst->conv == 'p' || lst->conv == 'c')
-		return(NULL);
+		return (NULL);
 	else if (lst->conv == 's')
 		return (ft_strnew_digit(lst->prec, ' '));
 	if ((lst->prec -= len) <= 0)
@@ -53,7 +65,7 @@ char	*ft_prec(p_list *lst, int len)
 	return (prec);
 }
 
-char	*ft_padding(char *width, char *prec, char *elem, p_list *lst)
+char			*ft_padding(char *width, char *prec, char *elem, p_list *lst)
 {
 	char	*padding;
 

@@ -6,15 +6,15 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 15:25:18 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/15 15:36:31 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/17 17:15:52 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static unsigned long long 	calc_div(unsigned int len)
+static unsigned long long	calc_div(unsigned int len)
 {
-	unsigned long long 	div;
+	unsigned long long	div;
 
 	div = 1;
 	while (--len)
@@ -22,7 +22,7 @@ static unsigned long long 	calc_div(unsigned int len)
 	return (div);
 }
 
-int		ft_ullnblen(unsigned long long nb)
+int							ft_ullnblen(unsigned long long nb)
 {
 	int		i;
 
@@ -37,7 +37,7 @@ int		ft_ullnblen(unsigned long long nb)
 	return (i);
 }
 
-char	*ft_s_lltoa(unsigned long long nb)
+char						*ft_s_lltoa(unsigned long long nb)
 {
 	unsigned long long		div;
 	char					*ret;

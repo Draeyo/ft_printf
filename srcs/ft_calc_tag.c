@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:35:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/15 15:57:46 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/17 16:56:20 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int		ft_get_flag(char *tag, p_list *lst)
 	int		i;
 
 	i = 0;
-	while (tag[i] && (tag[i] == '#' || tag[i] == '-' || tag[i] == '0'|| tag[i] == '+'
-			|| tag[i] == ' '))
+	while (tag[i] && (tag[i] == '#' || tag[i] == '-' || tag[i] == '0'
+				|| tag[i] == '+' || tag[i] == ' '))
 		i++;
 	if (i == 0 || i == (int)ft_strlen(tag))
 	{
@@ -42,8 +42,8 @@ int		ft_get_width(char *tag, p_list *lst)
 	{
 		while (ft_isdigit(tag[i]))
 		{
-				str[i] = tag[i];
-				i++;
+			str[i] = tag[i];
+			i++;
 		}
 		if (i == 0 || i == (int)ft_strlen(tag))
 			return (0);

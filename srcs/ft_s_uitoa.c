@@ -6,12 +6,11 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 16:08:57 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/15 16:12:50 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/17 17:17:46 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static int		calc_div(int len)
 {
@@ -23,7 +22,7 @@ static int		calc_div(int len)
 	return (div);
 }
 
-char	*ft_s_uitoa(unsigned int nb)
+char			*ft_s_uitoa(unsigned int nb)
 {
 	int		div;
 	char	*ret;

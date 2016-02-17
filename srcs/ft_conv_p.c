@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:19:17 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/10 16:32:23 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/17 16:58:40 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int					ft_conv_p(va_list ap, p_list *lst)
 	str = ft_itohex(stock);
 	ft_strcat(pnt, str);
 	free(str);
-	ft_putstr(ft_padding(ft_width(lst, ft_strlen(pnt)), ft_prec(lst, ft_strlen(pnt)), pnt, lst));
+	ft_putstr(ft_padding(ft_width(lst, ft_strlen(pnt)),
+				ft_prec(lst, ft_strlen(pnt)), pnt, lst));
 	free(pnt);
 	return (ft_strlen(pnt));
 }

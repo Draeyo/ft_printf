@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 11:35:36 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/15 16:17:21 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/17 16:57:36 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int		main(void)
 	printf("LLONG_MAX : %lld\n", LLONG_MAX);
 	printf("ULLONG_MAX : %llu\n", ULLONG_MAX);
 	printf("uintmax_t : %ju", uintmax);*/
-	unsigned int 	c = UINT_MAX;
-	ft_printf("%20.30u\n", c);
-	printf("%20.30u", c);
+	char 	c[] = "HELLO";
+	ft_printf("%50s\n", c);
+	printf("%50s", c);
 	return (0);
 }

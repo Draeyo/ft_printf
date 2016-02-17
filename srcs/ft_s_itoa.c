@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_s_itoa.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/17 17:14:12 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/02/17 17:17:08 by vlistrat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int		calc_len(int nb)
@@ -6,7 +18,7 @@ static int		calc_len(int nb)
 
 	len = 0;
 	if (nb < 0)
-		return((len = ft_nblen(nb) - 1));
+		return ((len = ft_nblen(nb) - 1));
 	else
 		return ((len = ft_nblen(nb)));
 }
@@ -21,7 +33,7 @@ static int		calc_div(int len)
 	return (div);
 }
 
-char	*ft_s_itoa(int nb)
+char			*ft_s_itoa(int nb)
 {
 	int		div;
 	char	*ret;
