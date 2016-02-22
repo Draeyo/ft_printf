@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 15:15:01 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/17 17:13:22 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/20 15:39:23 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 static char		*ft_ox(p_list *lst, char *hex)
 {
-	char	*str;
+	char	str[] = "0x";
 
-	str = ft_strnew(40);
 	if (ft_strchr(lst->flag, '#'))
 	{
-		str[0] = '0';
-		str[1] = 'x';
-		str = ft_strjoin(str, hex);
-		if (lst->conv == 'X')
-			str = ft_strupper(str);
-		return (str);
+		if (lst->prec)
+			lst->width -= 2;
+		if ((lst->prec - (int)ft_strlen(hex)) <= 0)
+			hex = ft_strjoin(str, hex);
 	}
+	hex = ft_padding(ft_width(lst, ft_strlen(hex)), ft_prec(lst, ft_strlen(hex)), hex, lst);
 	if (lst->conv == 'X')
-		hex = ft_strupper(hex);
+		hex = ft_xupper(hex);
 	return (hex);
 }
 
@@ -42,9 +40,7 @@ static int		ft_conv_hx(va_list ap, p_list *lst, char *hex)
 	{
 		hhx = va_arg(ap, unsigned int);
 		hex = ft_itohex(hhx);
-		hex = ft_ox(lst, hex);
-		ft_putstr(ft_padding(ft_width(lst, ft_strlen(hex)),
-					ft_prec(lst, ft_strlen(hex)), hex, lst));
+		ft_putstr((hex = ft_ox(lst, hex)));
 		free(hex);
 		return (ft_strlen(hex));
 	}
@@ -52,9 +48,7 @@ static int		ft_conv_hx(va_list ap, p_list *lst, char *hex)
 	{
 		hx = va_arg(ap, unsigned int);
 		hex = ft_itohex(hx);
-		hex = ft_ox(lst, hex);
-		ft_putstr(ft_padding(ft_width(lst, ft_strlen(hex)),
-					ft_prec(lst, ft_strlen(hex)), hex, lst));
+		ft_putstr((hex = ft_ox(lst, hex)));
 		free(hex);
 		return (ft_strlen(hex));
 	}
@@ -72,9 +66,7 @@ static int		ft_conv_lx(va_list ap, p_list *lst, char *hex)
 	{
 		llx = va_arg(ap, unsigned long long);
 		hex = ft_lltohex(llx);
-		hex = ft_ox(lst, hex);
-		ft_putstr(ft_padding(ft_width(lst, ft_strlen(hex)),
-					ft_prec(lst, ft_strlen(hex)), hex, lst));
+		ft_putstr((hex = ft_ox(lst, hex)));
 		free(hex);
 		return (ft_strlen(hex));
 	}
@@ -82,9 +74,7 @@ static int		ft_conv_lx(va_list ap, p_list *lst, char *hex)
 	{
 		lx = va_arg(ap, unsigned long);
 		hex = ft_lltohex(lx);
-		hex = ft_ox(lst, hex);
-		ft_putstr(ft_padding(ft_width(lst, ft_strlen(hex)),
-					ft_prec(lst, ft_strlen(hex)), hex, lst));
+		ft_putstr((hex = ft_ox(lst, hex)));
 		free(hex);
 		return (ft_strlen(hex));
 	}
@@ -104,9 +94,7 @@ int				ft_conv_x(va_list ap, p_list *lst)
 	{
 		x = va_arg(ap, int);
 		hex = ft_itohex(x);
-		hex = ft_ox(lst, hex);
-		ft_putstr(ft_padding(ft_width(lst, ft_strlen(hex)),
-					ft_prec(lst, ft_strlen(hex)), hex, lst));
+		ft_putstr((hex = ft_ox(lst, hex)));
 	}
 	else if ((count = ft_conv_hx(ap, lst, hex)) > 0)
 		return (count);

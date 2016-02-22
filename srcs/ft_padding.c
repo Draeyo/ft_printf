@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/17 17:10:58 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/20 16:32:38 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char		*ft_strnew_digit(int nb, int fill)
+char		*ft_strnew_digit(int nb, int fill)
 {
 	char	*str;
 	int		i;
@@ -61,6 +61,8 @@ char			*ft_prec(p_list *lst, int len)
 		return (ft_strnew_digit(lst->prec, ' '));
 	if ((lst->prec -= len) <= 0)
 		return (NULL);
+	if ((lst->conv == 'x' || lst->conv == 'X') && ft_strchr(lst->flag, '#'))
+		return (ft_strjoin("0x", ft_strnew_digit(lst->prec, '0')));
 	prec = ft_strnew_digit(lst->prec, '0');
 	return (prec);
 }

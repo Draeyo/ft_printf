@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/17 17:25:03 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/20 16:32:36 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ void				ft_putwchar_fd(wchar_t c, int fd);
 void				ft_putwstr_fd(wchar_t *wstr, int fd);
 char				*ft_strnewcpy(char *str);
 char				*ft_strcut(char *str, int n);
+char				*ft_xupper(char *str);
+char				*ft_strnew_digit(int nb, int fill);
 
 /*
 ** strsub du % au tag de conversion
