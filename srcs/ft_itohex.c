@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:33:22 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/21 17:41:04 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/24 17:09:34 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char		*ft_strrev(char *str)
 
 	i = 0;
 	j = ft_strlen(str) - 1;
-	buf = ft_strnew(ft_strlen(str) - 1);
+	buf = ft_strnew(ft_strlen(str));
 	while (j > -1)
 		buf[i++] = str[j--];
 	return (buf);

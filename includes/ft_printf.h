@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/20 16:32:36 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/24 17:06:51 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int					ft_noconv(p_list *lst);
 */
 unsigned int		ft_itoo(unsigned int nb);
 char				*ft_lltoo(unsigned long long nb);
+char				*ft_sttoo(size_t nb);
 char				*ft_uitoa(unsigned int n);
 char				*ft_itohex(unsigned int nb);
 char				*ft_lltohex(unsigned long long nb);
@@ -74,7 +75,8 @@ long				ft_s_atol(char *str);
 char				*ft_s_itoa(int nb);
 char				*ft_s_uitoa(unsigned int nb);
 char				*ft_s_ltoa(long nb);
-char				*ft_s_lltoa(unsigned long long nb);
+char				*ft_s_ulltoa(unsigned long long nb);
+char				*ft_s_lltoa(long long nb);
 
 /*
 ** Utilitaires

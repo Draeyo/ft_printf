@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s_lltoa.c                                       :+:      :+:    :+:   */
+/*   ft_s_ulltoa.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 15:25:18 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/24 17:35:21 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/24 16:28:45 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static long long	calc_div(int len)
+static unsigned long long	calc_div(unsigned int len)
 {
-	long long	div;
+	unsigned long long	div;
 
 	div = 1;
 	while (--len)
@@ -22,15 +22,30 @@ static long long	calc_div(int len)
 	return (div);
 }
 
-char						*ft_s_lltoa(long long nb)
+int							ft_ullnblen(unsigned long long nb)
 {
-	long long		div;
+	int		i;
+
+	i = 0;
+	if (nb == 0)
+		return (1);
+	while (nb)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char						*ft_s_ulltoa(unsigned long long nb)
+{
+	unsigned long long		div;
 	char					*ret;
 	unsigned int			len;
 	int						i;
 
 	i = 0;
-	len = ft_llnblen(nb);
+	len = ft_ullnblen(nb);
 	div = calc_div(len);
 	ret = ft_strnew(len + 1);
 	if (nb == 0)

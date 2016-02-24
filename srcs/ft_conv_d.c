@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/22 16:08:17 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/24 17:37:14 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 static int		ft_conv_jzd(va_list ap, p_list *lst, char *str)
 {
 	intmax_t	jd;
-	long long jz;
+	long long zd;
 
 	jd = 0;
-	jz = 0;
+	zd = 0;
 	if (ft_strstr(lst->modif, "j"))
 	{
 		jd = va_arg(ap, intmax_t);
-		ft_putstr((str = ft_padding(ft_width(lst, ft_strlen(ft_s_ltoa(jd))),
-				ft_prec(lst, ft_strlen(ft_s_ltoa(jd))), ft_s_ltoa(jd), lst)));
+		ft_putstr((str = ft_padding(ft_width(lst, ft_strlen(ft_s_lltoa(jd))),
+				ft_prec(lst, ft_strlen(ft_s_lltoa(jd))), ft_s_lltoa(jd), lst)));
 		return(ft_strlen(str));
 	}
 	else if (ft_strstr(lst->modif, "z"))
 	{
-		jz = va_arg(ap, long long);
-		ft_putstr((str = ft_padding(ft_width(lst, ft_strlen(ft_s_lltoa(jd))),
-				ft_prec(lst, ft_strlen(ft_s_lltoa(jd))), ft_s_lltoa(jd), lst)));
+		zd = va_arg(ap, long long);
+		ft_putstr((str = ft_padding(ft_width(lst, ft_strlen(ft_s_lltoa(zd))),
+				ft_prec(lst, ft_strlen(ft_s_lltoa(zd))), ft_s_lltoa(zd), lst)));
 		return(ft_strlen(str));
 	}
 	return (-1);

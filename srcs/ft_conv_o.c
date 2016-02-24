@@ -6,11 +6,38 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:26:46 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/20 16:05:24 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/24 17:11:26 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int		ft_conv_jzo(va_list ap, p_list *lst, char *str)
+{
+	uintmax_t	jo;
+	size_t		zo;
+	char 			*stock = NULL;
+
+	jo = 0;
+	zo = 0;
+	if (ft_strstr(lst->modif, "j"))
+	{
+		jo = va_arg(ap, uintmax_t);
+		stock = ft_lltoo((unsigned long long)jo);
+		ft_putstr((str = ft_padding(ft_width(lst, ft_strlen(stock)),
+			ft_prec(lst, ft_strlen(stock)), stock, lst)));
+		return (ft_strlen(str));
+	}
+	else if (ft_strstr(lst->modif, "z"))
+	{
+		zo = va_arg(ap, size_t);
+		stock = ft_sttoo(zo);
+		ft_putstr((str = ft_padding(ft_width(lst, ft_strlen(stock)),
+			ft_prec(lst, ft_strlen(stock)), stock, lst)));
+		return(ft_strlen(str));
+	}
+	return (-1);
+}
 
 static int		ft_conv_ho(va_list ap, p_list *lst, char *str)
 {
@@ -91,6 +118,8 @@ int				ft_conv_o(va_list ap, p_list *lst)
 	else if ((count = ft_conv_ho(ap, lst, str)) > 0)
 		return (count);
 	else if ((count = ft_conv_lo(ap, lst, str)) > 0)
+		return (count);
+	else if ((count = ft_conv_jzo(ap, lst, str)) > 0)
 		return (count);
 	return (0);
 }

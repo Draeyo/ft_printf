@@ -1,3 +1,4 @@
-passer lltoa en en ulltoa et recreer une lltoa pour j/z 'd'
-ajouter j/z pour ouxX (j = uintmax_t/ULLONG_MAX et z = size_t)
+// CHECK // passer lltoa en en ulltoa et recreer une lltoa pour j/z 'd'
+// CHECK // ajouter j/z pour ouxX (j = uintmax_t/ULLONG_MAX et z = size_t)
+
 ajouter les flags + / 0 / ' '

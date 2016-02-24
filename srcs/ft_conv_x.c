@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 15:15:01 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/20 15:39:23 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/02/24 17:29:56 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,32 @@ static char		*ft_ox(p_list *lst, char *hex)
 	if (lst->conv == 'X')
 		hex = ft_xupper(hex);
 	return (hex);
+}
+
+static int		ft_conv_jzx(va_list ap, p_list *lst, char *hex)
+{
+	uintmax_t	jx;
+	size_t		zx;
+
+	jx = 0;
+	zx = 0;
+	if (ft_strstr(lst->modif, "j"))
+	{
+		jx = va_arg(ap, uintmax_t);
+		hex = ft_lltohex(jx);
+		ft_putstr((hex = ft_ox(lst, hex)));
+		free(hex);
+		return (ft_strlen(hex));
+	}
+	else if (ft_strstr(lst->modif, "z"))
+	{
+		zx = va_arg(ap, size_t);
+		hex = ft_lltohex((unsigned long long)zx);
+		ft_putstr((hex = ft_ox(lst, hex)));
+		free(hex);
+		return (ft_strlen(hex));
+	}
+	return (-1);
 }
 
 static int		ft_conv_hx(va_list ap, p_list *lst, char *hex)
@@ -99,6 +125,8 @@ int				ft_conv_x(va_list ap, p_list *lst)
 	else if ((count = ft_conv_hx(ap, lst, hex)) > 0)
 		return (count);
 	else if ((count = ft_conv_lx(ap, lst, hex)) > 0)
+		return (count);
+	else if ((count = ft_conv_jzx(ap, lst, hex)) > 0)
 		return (count);
 	free(hex);
 	return (ft_strlen(hex));
