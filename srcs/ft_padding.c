@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/20 16:32:38 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/03/30 12:51:34 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ char			*ft_width(p_list *lst, int len)
 {
 	char	*width;
 	int		i;
+	int		flag;
 
+	flag = ' ';
+	if (lst->conv != 's' && !lst->prec && ft_strchr(lst->flag, '0'))
+			flag = '0';
 	if (lst->width <= 0)
 		return (NULL);
 	i = 0;
@@ -44,7 +48,7 @@ char			*ft_width(p_list *lst, int len)
 		lst->width -= lst->prec;
 	else if ((lst->width -= len) <= 0)
 		return (NULL);
-	if (!(width = ft_strnew_digit(lst->width, ' ')))
+	if (!(width = ft_strnew_digit(lst->width, flag)))
 		return (NULL);
 	return (width);
 }
@@ -72,14 +76,18 @@ char			*ft_padding(char *width, char *prec, char *elem, p_list *lst)
 	char	*padding;
 
 	padding = NULL;
-	if (prec && lst->conv != 's')
+	if (prec && lst->conv != 's' && !ft_isneg(elem, lst))
 		padding = ft_strjoin(prec, elem);
+	else if (prec && lst->conv != 's' && ft_isneg(elem, lst))
+		padding = ft_strnegjoin(prec, elem);
 	else if (lst->prec && lst->conv == 's')
 		padding = ft_strcut(elem, lst->prec);
 	else
 		padding = ft_strnewcpy(elem);
-	if (width && !ft_strchr(lst->tag, '-'))
+	if (width && !ft_strchr(lst->tag, '-') && !ft_isneg(elem, lst))
 		padding = ft_strjoin(width, padding);
+	else if (width && !ft_strchr(lst->tag, '-') && ft_isneg(elem, lst))
+		padding = ft_zerowidth(width, padding);
 	else if (width && ft_strchr(lst->tag, '-'))
 		padding = ft_strjoin(padding, width);
 	return (padding);

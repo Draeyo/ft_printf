@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 11:35:36 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/24 17:37:24 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/03/30 12:53:43 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		main(void)
 {
-/*	char		str[] = "HELLO";
+	char		str[] = "HELLO";
 	int			nb = 128;
 	int			li = 4294967295;
 	wchar_t		wstr[] = L"猫δ요莨ي";
@@ -28,7 +28,7 @@ int		main(void)
 	printf("s : %s\n", str);
 	ft_printf("--------------------\n");
 	ft_printf("S : %S\n", wstr);
-//	printf("S : %S\n", wstr);
+	//printf("S : %S\n", wstr);
 	ft_printf("--------------------\n");
 	ft_printf("D : %D || %D\n", li, nb);
 	printf("D : %D || %D\n", li, nb);
@@ -49,7 +49,7 @@ int		main(void)
 	printf("c : '%c' || '%c'\n", 'r', 65);
 	ft_printf("--------------------\n");
 	ft_printf("C : %C || %C || %C || %C || %C\n", L'猫', L'δ', L'요', L'莨', L'ي');
-//	printf("C : %C || %C || %C || %C || %C\n", L'猫', L'δ', L'요', L'莨', L'ي');
+	//printf("C : %C || %C || %C || %C || %C\n", L'猫', L'δ', L'요', L'莨', L'ي');
 	ft_printf("--------------------\n");
 	ft_printf("o : %o || %o\n", nb, li);
 	printf("o : %o || %o\n", nb, li);
@@ -71,17 +71,9 @@ int		main(void)
 	ft_printf("--------------------\n");
 	ft_printf("hd : %hd || %hd\n", (short)32768, (short)-32769);
 	printf("hd : %hd || %hd\n", (short)32768, (short)-32769);
-	ft_printf("--------------------\n");*/
-/*	printf("UINT_MAX : %D\n", UINT_MAX);
-	printf("LONG_MAX : %ld\n", LONG_MAX);
-	printf("LONG_MAX : %llU || %lu\n", a + 1, sizeof(a));
-	printf("ULONG_MAX : %lu\n", ULONG_MAX);
-	printf("LLONG_MAX : %lld\n", LLONG_MAX);
-	printf("ULLONG_MAX : %llu\n", ULLONG_MAX);
-	printf("uintmax_t : %ju", uintmax);*/
-	int 	chiffre = 255;
-	int	chiffre2 = 256;
-	ft_printf("%d || %d", chiffre, chiffre2);
-//	printf("%d", c);
+	ft_printf("--------------------\n");
+	ft_printf("negative w/ prec : %.3d\n", -2);
+	ft_printf("0 flag : %030d\n", -2);
+	ft_printf("%6.5o\n", 2500);
 	return (0);
 }
