@@ -1,4 +1,4 @@
-// CHECK // passer lltoa en en ulltoa et recreer une lltoa pour j/z 'd'
-// CHECK // ajouter j/z pour ouxX (j = uintmax_t/ULLONG_MAX et z = size_t)
+ajouter les flags 0(OK) / ' ' / +
 
-ajouter les flags + / 0 / ' '
+ +  -> always place a sign before a number produced by a signed conversion, + override space.
+' ' -> blank before %d and %i.
