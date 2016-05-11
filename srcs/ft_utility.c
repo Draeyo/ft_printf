@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 12:15:25 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/03/30 12:32:19 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/03 12:20:58 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,25 @@ char	*ft_zerowidth(char *width, char *elem)
 	ret[i] = '0';
 	ret[0] = '-';
 	return (ret);
+}
+
+int		ft_tag_error(p_list *lst, const char *format)
+{
+	int		i;
+
+	i = 0;
+	lst->conv = '0';
+	lst->tag = NULL;
+	while (format[i] != ' ')
+		i++;
+	return (++i);
+}
+
+int		ft_next_arg(va_list ap)
+{
+	int		bin;
+
+	bin = va_arg(ap, int);
+	bin = 0;
+	return (0);
 }

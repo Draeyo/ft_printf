@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/03/30 12:32:33 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/03 12:21:20 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ char				*ft_strnew_digit(int nb, int fill);
 int					ft_isneg(char *str, p_list *lst);
 char				*ft_strnegjoin(char *prec, char *elem);
 char				*ft_zerowidth(char *width, char *elem);
+int					ft_tag_error(p_list *lst, const char *format);
+int					ft_next_arg(va_list ap);
 
 /*
 ** strsub du % au tag de conversion
