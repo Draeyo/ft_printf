@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbo.c                                        :+:      :+:    :+:   */
+/*   ft_uitooa.c.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 14:37:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/10 16:30:34 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 15:15:29 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_putnbo(unsigned int nb)
+char	*ft_uitooa(uintmax_t nb)
 {
-	char	*str;
-	char	*pnt;
+	char	*ret;
 	int		i;
 
-	str = ft_strnew(20);
-	pnt = str;
 	i = 0;
+	ret = ft_strnew(ft_nblen(nb) * 2);
 	while (nb)
 	{
-		str[i] = (nb % 8) + 48;
+		ret[i] = (nb % 8) + 48;
 		nb /= 8;
 		i++;
 	}
-	str = ft_strrev(str);
-	return (str);
+	ret = ft_strrev(ret);
+	return (ret);
 }

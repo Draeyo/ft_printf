@@ -6,16 +6,16 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/24 17:10:24 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 15:21:02 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-unsigned int	ft_itoo(unsigned int nb)
+uintmax_t		ft_itoo(uintmax_t nb)
 {
-	unsigned int	ret;
-	int				mult;
+	uintmax_t		ret;
+	uintmax_t		mult;
 
 	ret = 0;
 	mult = 1;

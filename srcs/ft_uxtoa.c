@@ -1,0 +1,49 @@
+#include "ft_printf.h"
+
+static uintmax_t	calc_div(int len)
+{
+	uintmax_t  div;
+
+	div = 1;
+	while (--len)
+		div *= 10;
+	return (div);
+}
+
+int							ft_uxnblen(uintmax_t nb)
+{
+	int		i;
+
+	i = 0;
+	if (nb == 0)
+		return (1);
+	while (nb)
+	{
+		nb /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char						*ft_uxtoa(uintmax_t nb)
+{
+	uintmax_t		div;
+	char					*ret;
+	int			len;
+	int						i;
+
+	i = 0;
+	len = ft_uxnblen(nb);
+	div = calc_div(len);
+	ret = ft_strnew(len + 1);
+	if (nb == 0)
+		return ("0");
+	while (len-- && div)
+	{
+		ret[i] = ((nb / div) + 48);
+		nb -= ((nb / div) * div);
+		div /= 10;
+		i++;
+	}
+	return (ret);
+}

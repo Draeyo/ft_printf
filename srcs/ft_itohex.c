@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:33:22 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/24 17:09:34 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 14:50:13 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char		*ft_strrev(char *str)
 	return (buf);
 }
 
-char		*ft_itohex(unsigned int nb)
+char		*ft_itohex(uintmax_t nb)
 {
 	char	*str;
 	char	*pnt;

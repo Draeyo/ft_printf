@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlistrat <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:52:32 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/01/11 17:42:06 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 13:07:00 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-void				ft_putchar(char c);
+int					ft_putchar(char c);
 void				ft_putchar_fd(char c, int fd);
-void				ft_putstr(char const *s);
+int					ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
-void				ft_putnbr(int n);
+void				ft_putnbr(intmax_t nb);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_strclr(char *s);
 size_t				ft_strlen(const char *s);

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:27:45 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/22 15:39:53 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 13:12:23 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 int		ft_conv_s(va_list ap, p_list *lst)
 {
+	int		ret;
 	char	*s;
-	char	*str;
 
 	s = NULL;
-	str = NULL;
+	ret = 0;
 	if (lst->conv == 's')
 	{
 		s = va_arg(ap, char*);
-		ft_putstr((str = ft_padding(ft_width(lst, ft_strlen(s)),
-					ft_prec(lst, ft_strlen(s)), s, lst)));
+		ret = ft_padding_str(lst, s);
 	}
 	else if ((lst->modif != NULL && ft_strstr(lst->modif, "l"))
 			|| lst->conv == 'S')
 		return (ft_conv_ws(ap, lst));
-	return (ft_strlen(str));
+	return (ret);
 }

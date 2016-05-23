@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 16:14:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/03 12:11:41 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 15:16:19 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void			lst_init(p_list *lst)
 	lst->modif = NULL;
 	lst->conv = '\0';
 	lst->len = 0;
+	lst->neg = 0;
 }
 
 int				ft_conv_tag(const char *format, p_list *lst)

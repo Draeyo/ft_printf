@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:19:17 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/20 16:21:44 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 14:00:08 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int					ft_conv_p(va_list ap, p_list *lst)
 	char			*str;
 	unsigned int	stock;
 	char			*pnt = NULL;
-	char			*ret = NULL;
 
 	p = 0;
 	stock = 0;
@@ -42,8 +41,6 @@ int					ft_conv_p(va_list ap, p_list *lst)
 	str = ft_itohex(stock);
 	pnt = ft_strcat(pnt, str);
 	free(str);
-	ft_putstr((ret = ft_padding(ft_width(lst, ft_strlen(pnt)),
-				ft_prec(lst, ft_strlen(pnt)), pnt, lst)));
 	free(pnt);
-	return (ft_strlen(ret));
+	return (ft_padding_str(lst, pnt));
 }

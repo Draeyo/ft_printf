@@ -6,18 +6,11 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 12:15:25 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/03 12:20:58 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 11:38:53 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		ft_isneg(char *str, p_list *lst)
-{
-	if (str[0] == '-' && (lst->conv == 'd' || lst->conv == 'i'))
-		return (1);
-	return (0);
-}
 
 char	*ft_strnegjoin(char *prec, char *elem)
 {
