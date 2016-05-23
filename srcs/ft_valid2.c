@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 13:21:53 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 14:07:07 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:41:58 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,16 @@ int		ft_after_prec(int c)
 	return (1);
 }
 
-int		ft_plus(p_list *lst)
+int		ft_plus(t_print *lst)
 {
 	if (lst->conv == 'd' || lst->conv == 'D' || lst->conv == 'i')
+		return (1);
+	return (0);
+}
+
+int		ft_ishex(t_print *lst)
+{
+	if (lst->conv == 'x' || lst->conv == 'X')
 		return (1);
 	return (0);
 }

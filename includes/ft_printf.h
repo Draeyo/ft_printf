@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 15:21:19 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:36:33 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 /*
 ** strcture de recuperation du tag entier puis des elements du tag 1 par 1
 */
-typedef struct		ft_list
+typedef struct		s_print
 {
 	char			*tag;
 	char			*flag;
@@ -36,7 +36,8 @@ typedef struct		ft_list
 	char			conv;
 	int				len;
 	int				neg;
-}					p_list;
+	char			*hex;
+}					t_print;
 
 /*
 ** fonction principale
@@ -46,38 +47,28 @@ int					ft_printf(const char *format, ...);
 /*
 ** envoi vers fonction de conv correspondante
 */
-int					ft_tag(va_list ap, p_list *lst);
+int					ft_tag(va_list ap, t_print *lst);
 
 /*
 ** fonctions de recuperation argument et conversion
 */
-int					ft_conv_s(va_list ap, p_list *lst);
-int					ft_conv_d(va_list ap, p_list *lst);
-int					ft_conv_p(va_list ap, p_list *lst);
-int					ft_conv_x(va_list ap, p_list *lst);
-int					ft_conv_c(va_list ap, p_list *lst);
-int					ft_conv_o(va_list ap, p_list *lst);
-int					ft_conv_ws(va_list ap, p_list *lst);
-int					ft_conv_wc(va_list ap, p_list *lst);
-int					ft_conv_u(va_list ap, p_list *lst);
-int					ft_noconv(p_list *lst);
+int					ft_conv_s(va_list ap, t_print *lst);
+int					ft_conv_d(va_list ap, t_print *lst);
+int					ft_conv_p(va_list ap, t_print *lst);
+int					ft_conv_x(va_list ap, t_print *lst);
+int					ft_conv_c(va_list ap, t_print *lst);
+int					ft_conv_o(va_list ap, t_print *lst);
+int					ft_conv_ws(va_list ap, t_print *lst);
+int					ft_conv_wc(va_list ap, t_print *lst);
+int					ft_conv_u(va_list ap, t_print *lst);
+int					ft_noconv(t_print *lst);
 
 /*
 ** conversions divers
 */
 uintmax_t		ft_itoo(uintmax_t nb);
-char				*ft_lltoo(unsigned long long nb);
-char				*ft_sttoo(size_t nb);
-char				*ft_uitoa(unsigned int n);
 char				*ft_itohex(uintmax_t nb);
-char				*ft_lltohex(unsigned long long nb);
 int					ft_s_atoi(char *str);
-long				ft_s_atol(char *str);
-char				*ft_s_itoa(int nb);
-char				*ft_s_uitoa(unsigned int nb);
-char				*ft_s_ltoa(long nb);
-char				*ft_s_ulltoa(unsigned long long nb);
-char				*ft_s_lltoa(long long nb);
 char				*ft_xtoa(intmax_t nb);
 char				*ft_uxtoa(uintmax_t nb);
 
@@ -85,28 +76,20 @@ char				*ft_uxtoa(uintmax_t nb);
 ** Utilitaires
 */
 char				*ft_uitooa(uintmax_t nb);
-void				ft_putlong(unsigned long long nb);
-void				ft_put_unsigned_int(unsigned int nb);
 char				*ft_strupper(char *str);
 char				*ft_strrev(char *str);
 int					ft_nblen(intmax_t nb);
 int					ft_uxnblen(uintmax_t nb);
-int					ft_unblen(unsigned int nb);
-int					ft_llnblen(long long nb);
-int					ft_ullnblen(unsigned long long nb);
-void				lst_init(p_list *lst);
+void				lst_init(t_print *lst);
 void				ft_putwchar_fd(wchar_t c, int fd);
 void				ft_putwstr_fd(wchar_t *wstr, int fd);
 char				*ft_strnewcpy(char *str);
 char				*ft_strcut(char *str, int n);
 char				*ft_xupper(char *str);
 char				*ft_strnew_digit(int nb, int fill);
-char				*ft_strnegjoin(char *prec, char *elem);
-char				*ft_zerowidth(char *width, char *elem);
-int					ft_tag_error(p_list *lst, const char *format);
-int					ft_next_arg(va_list ap);
-int					ft_plus(p_list *lst);
-
+int					ft_tag_error(t_print *lst, const char *format);
+int					ft_plus(t_print *lst);
+int					ft_ishex(t_print *lst);
 /*
 ** strsub du % au tag de conversion
 */
@@ -116,12 +99,12 @@ char				*ft_get_tag(const char *format, int last);
 /*
 ** recuperation du tag dans la structure
 */
-int					ft_conv_tag(const char *format, p_list *lst);
-int					ft_get_flag(char *tag, p_list *lst);
-int					ft_get_width(char *tag, p_list *lst);
-int					ft_get_prec(char *tag, p_list *lst);
-int					ft_get_modif(char *tag, p_list *lst);
-int					ft_get_conv(char *tag, p_list *lst);
+int					ft_conv_tag(const char *format, t_print *lst);
+int					ft_get_flag(char *tag, t_print *lst);
+int					ft_get_width(char *tag, t_print *lst);
+int					ft_get_prec(char *tag, t_print *lst);
+int					ft_get_modif(char *tag, t_print *lst);
+int					ft_get_conv(char *tag, t_print *lst);
 
 /*
 ** verifications du flag
@@ -136,11 +119,11 @@ int					ft_after_prec(int c);
 /*
 ** Options
 */
-char				*ft_width(p_list *lst, int len);
-char				*ft_prec(p_list *lst, int len);
-char				*ft_padding(char *width, char *prec, char *elem, p_list *lst);
-int					ft_padding_str(p_list *lst, char *str);
-int					ft_padding_int(p_list *lst, intmax_t nb);
-int					ft_padding_uint(p_list *lst, uintmax_t nb);
+char				*ft_width(t_print *lst, int len);
+char				*ft_prec(t_print *lst, int len);
+char				*ft_padding(char *width, char *prec, char *elem, t_print *lst);
+int					ft_padding_str(t_print *lst, char *str);
+int					ft_padding_int(t_print *lst, intmax_t nb);
+int					ft_padding_uint(t_print *lst, uintmax_t nb);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:27:45 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 13:12:23 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:38:54 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_conv_s(va_list ap, p_list *lst)
+int		ft_conv_s(va_list ap, t_print *lst)
 {
 	int		ret;
 	char	*s;

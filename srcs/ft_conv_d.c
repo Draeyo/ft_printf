@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 13:14:31 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:38:16 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_conv_jzd(va_list ap, p_list *lst)
+static int		ft_conv_jzd(va_list ap, t_print *lst)
 {
 	intmax_t	jd;
 	long long zd;
@@ -32,7 +32,7 @@ static int		ft_conv_jzd(va_list ap, p_list *lst)
 	return (-1);
 }
 
-static int		ft_conv_hd(va_list ap, p_list *lst)
+static int		ft_conv_hd(va_list ap, t_print *lst)
 {
 	char		c;
 	short		s;
@@ -51,7 +51,7 @@ static int		ft_conv_hd(va_list ap, p_list *lst)
 	return (-1);
 }
 
-static int		ft_conv_ld(va_list ap, p_list *lst)
+static int		ft_conv_ld(va_list ap, t_print *lst)
 {
 	long		ld;
 	long long	lld;
@@ -72,7 +72,7 @@ static int		ft_conv_ld(va_list ap, p_list *lst)
 	return (-1);
 }
 
-int				ft_conv_d(va_list ap, p_list *lst)
+int				ft_conv_d(va_list ap, t_print *lst)
 {
 	int				d;
 	unsigned int	ud;
@@ -89,7 +89,7 @@ int				ft_conv_d(va_list ap, p_list *lst)
 	else if (lst->modif == NULL && lst->conv == 'D')
 	{
 		ud = va_arg(ap, unsigned int);
-		return (ft_padding_str(lst, ft_s_uitoa(ud)));
+		return (ft_padding_str(lst, ft_uxtoa(ud)));
 	}
 	if ((count = ft_conv_hd(ap, lst)) > 0)
 		return (count);

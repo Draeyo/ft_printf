@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:58:48 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/17 17:07:15 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:39:34 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_conv_ws(va_list ap, p_list *lst)
+int		ft_conv_ws(va_list ap, t_print *lst)
 {
 	wchar_t		*wstr;
 
@@ -24,7 +24,7 @@ int		ft_conv_ws(va_list ap, p_list *lst)
 	return (ft_wstrlen(wstr));
 }
 
-int		ft_conv_wc(va_list ap, p_list *lst)
+int		ft_conv_wc(va_list ap, t_print *lst)
 {
 	wint_t		wint;
 	wchar_t		wbuf;

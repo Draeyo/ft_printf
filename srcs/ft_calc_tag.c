@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:35:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/03/30 12:41:45 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:37:45 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_get_flag(char *tag, p_list *lst)
+int		ft_get_flag(char *tag, t_print *lst)
 {
 	int		i;
 
@@ -31,7 +31,7 @@ int		ft_get_flag(char *tag, p_list *lst)
 	return (1);
 }
 
-int		ft_get_width(char *tag, p_list *lst)
+int		ft_get_width(char *tag, t_print *lst)
 {
 	char	*str;
 	int		i;
@@ -57,7 +57,7 @@ int		ft_get_width(char *tag, p_list *lst)
 		return (-1);
 }
 
-int		ft_get_prec(char *tag, p_list *lst)
+int		ft_get_prec(char *tag, t_print *lst)
 {
 	char	*str;
 	int		i;
@@ -82,7 +82,7 @@ int		ft_get_prec(char *tag, p_list *lst)
 	return (1);
 }
 
-int		ft_get_modif(char *tag, p_list *lst)
+int		ft_get_modif(char *tag, t_print *lst)
 {
 	char	*str;
 	int		i;
@@ -105,7 +105,7 @@ int		ft_get_modif(char *tag, p_list *lst)
 	return (1);
 }
 
-int		ft_get_conv(char *tag, p_list *lst)
+int		ft_get_conv(char *tag, t_print *lst)
 {
 	if (ft_isconv(tag[0]))
 	{

@@ -10,21 +10,6 @@ static uintmax_t	calc_div(int len)
 	return (div);
 }
 
-int							ft_uxnblen(uintmax_t nb)
-{
-	int		i;
-
-	i = 0;
-	if (nb == 0)
-		return (1);
-	while (nb)
-	{
-		nb /= 10;
-		i++;
-	}
-	return (i);
-}
-
 char						*ft_uxtoa(uintmax_t nb)
 {
 	uintmax_t		div;

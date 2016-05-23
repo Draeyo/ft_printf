@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 15:36:25 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:40:38 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ char		*ft_strnew_digit(int nb, int fill)
 	return (str);
 }
 
-char			*ft_width(p_list *lst, int len)
+char			*ft_width(t_print *lst, int len)
 {
 	char	*width;
 	int		i;
 	int		flag;
 
 	flag = ' ';
+	if (ft_ishex(lst) && !ft_strchr(lst->flag, '0'))
+		lst->prec -= 2;
 	if (lst->conv != 's' && !lst->prec && ft_strchr(lst->flag, '0'))
 			flag = '0';
 	if (lst->width <= 0)
@@ -50,10 +52,15 @@ char			*ft_width(p_list *lst, int len)
 		return (NULL);
 	if (!(width = ft_strnew_digit(lst->width, flag)))
 		return (NULL);
+	if (ft_ishex(lst) && ft_strchr(lst->flag, '0'))
+	{
+		lst->prec -= 2;
+		return (ft_strjoin(lst->hex, ft_strnew_digit(lst->width, flag)));
+	}
 	return (width);
 }
 
-char			*ft_prec(p_list *lst, int len)
+char			*ft_prec(t_print *lst, int len)
 {
 	char	*prec;
 	int		i;
@@ -65,8 +72,6 @@ char			*ft_prec(p_list *lst, int len)
 		return (ft_strnew_digit(lst->prec, ' '));
 	if ((lst->prec -= len) <= 0)
 		return (NULL);
-	if ((lst->conv == 'x' || lst->conv == 'X') && ft_strchr(lst->flag, '#'))
-		return (ft_strjoin("0x", ft_strnew_digit(lst->prec, '0')));
 	prec = ft_strnew_digit(lst->prec, '0');
 	return (prec);
 }

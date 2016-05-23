@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:33:22 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 14:50:13 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:26:00 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,6 @@ char		*ft_itohex(uintmax_t nb)
 	int		i;
 
 	str = ft_strnew(40);
-	pnt = str;
-	i = 0;
-	if (nb == 0)
-		str[0] = '0';
-	while (nb != 0)
-	{
-		if (nb % 16 < 10)
-			str[i] = (nb % 16) + 48;
-		else if (nb % 16 >= 10)
-			str[i] = (nb % 16) - 10 + 97;
-		nb /= 16;
-		i++;
-	}
-	str = ft_strrev(str);
-	free(pnt);
-	return (str);
-}
-
-char		*ft_lltohex(unsigned long long nb)
-{
-	char	*str;
-	char	*pnt;
-	int		i;
-
-	str = ft_strnew(50);
 	pnt = str;
 	i = 0;
 	if (nb == 0)

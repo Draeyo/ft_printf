@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int  ft_flags(p_list *lst)
+static int  ft_flags(t_print *lst)
 {
   if (lst->flag && !lst->neg && ft_strchr(lst->flag, '+') && ft_plus(lst))
     return (ft_putstr("+"));
@@ -9,23 +9,40 @@ static int  ft_flags(p_list *lst)
   return (0);
 }
 
-static char   *ft_flag_octal(p_list *lst, char *str)
+static int   ft_diese_o(t_print *lst, char **str)
 {
   if ((lst->conv == 'O' || lst->conv == 'o') && ft_strchr(lst->flag, '#'))
-    str = ft_strjoin("0", str);
-  return (str);
+  {
+    *str = ft_strjoin("0", *str);
+    return (1);
+  }
+  return (0);
 }
 
-int   ft_padding_str(p_list *lst, char *str)
+static int    ft_diese_x(t_print *lst, char *str)
+{
+  if (ft_ishex(lst))
+  {
+    if (!ft_strstr(str, "0") && ft_strchr(lst->flag, '#') && !ft_strchr(lst->flag, '0'))
+    {
+      lst->prec -= 2;
+      return (ft_putstr(lst->hex));
+    }
+  }
+  return (0);
+}
+
+int   ft_padding_str(t_print *lst, char *str)
 {
   int ret;
   int len;
 
-  ret = 0;
-  str = ft_flag_octal(lst, str);
+  ret = ft_diese_o(lst, &str);
   len = (int)ft_strlen(str);
-  ret += ft_putstr(ft_width(lst, len));
+  if (!ft_strchr(lst->flag, '-'))
+    ret += ft_putstr(ft_width(lst, len));
   ret += ft_flags(lst);
+  ret += ft_diese_x(lst, str);
   if (lst->conv != 's' && lst->conv != 'S')
     ret += ft_putstr(ft_prec(lst, len));
   if (lst->conv == 'X')
@@ -34,10 +51,12 @@ int   ft_padding_str(p_list *lst, char *str)
     ret += write(1, str, (lst->prec > len && lst->prec > 0) ? lst->prec : len);
   else
     ret += ft_putstr(str);
+  if (ft_strchr(lst->flag, '-'))
+    ret += ft_putstr(ft_width(lst, len));
   return(ret);
 }
 
-int   ft_padding_int(p_list *lst, intmax_t nb)
+int   ft_padding_int(t_print *lst, intmax_t nb)
 {
   int ret;
   char *str;
@@ -54,7 +73,7 @@ int   ft_padding_int(p_list *lst, intmax_t nb)
   return (ret);
 }
 
-int   ft_padding_uint(p_list *lst, uintmax_t nb)
+int   ft_padding_uint(t_print *lst, uintmax_t nb)
 {
   int ret;
   char *str;

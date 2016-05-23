@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:28:09 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/03 12:21:27 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:41:21 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_tag(va_list ap, p_list *lst)
+int		ft_tag(va_list ap, t_print *lst)
 {
 	int		j;
 

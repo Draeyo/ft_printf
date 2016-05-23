@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 15:15:01 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 15:01:17 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:39:45 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_conv_jzx(va_list ap, p_list *lst)
+static int		ft_conv_jzx(va_list ap, t_print *lst)
 {
 	uintmax_t	jx;
 	size_t		zx;
@@ -32,7 +32,7 @@ static int		ft_conv_jzx(va_list ap, p_list *lst)
 	return (-1);
 }
 
-static int		ft_conv_hx(va_list ap, p_list *lst)
+static int		ft_conv_hx(va_list ap, t_print *lst)
 {
 	unsigned char	hhx;
 	unsigned short	hx;
@@ -52,7 +52,7 @@ static int		ft_conv_hx(va_list ap, p_list *lst)
 	return (-1);
 }
 
-static int		ft_conv_lx(va_list ap, p_list *lst)
+static int		ft_conv_lx(va_list ap, t_print *lst)
 {
 	unsigned long long	llx;
 	unsigned long		lx;
@@ -72,16 +72,20 @@ static int		ft_conv_lx(va_list ap, p_list *lst)
 	return (-1);
 }
 
-int				ft_conv_x(va_list ap, p_list *lst)
+int				ft_conv_x(va_list ap, t_print *lst)
 {
-	int		x;
-	int		count;
+	unsigned int		x;
+	int							count;
 
 	x = 0;
 	count = 0;
+	if (ft_strchr(lst->flag, '#') && lst->conv == 'x')
+		lst->hex = "0x";
+	else if (ft_strchr(lst->flag, '#') && lst->conv == 'X')
+		lst->hex = "0X";
 	if (lst->modif == NULL && (lst->conv == 'x' || lst->conv == 'X'))
 	{
-		x = va_arg(ap, int);
+		x = va_arg(ap, unsigned int);
 		return (ft_padding_str(lst, ft_itohex(x)));
 	}
 	else if ((count = ft_conv_hx(ap, lst)) > 0)

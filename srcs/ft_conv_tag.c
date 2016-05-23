@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 16:14:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 15:16:19 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:39:06 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void			lst_init(p_list *lst)
+void			lst_init(t_print *lst)
 {
 	lst->tag = NULL;
 	lst->flag = NULL;
@@ -22,9 +22,10 @@ void			lst_init(p_list *lst)
 	lst->conv = '\0';
 	lst->len = 0;
 	lst->neg = 0;
+	lst->hex = NULL;
 }
 
-int				ft_conv_tag(const char *format, p_list *lst)
+int				ft_conv_tag(const char *format, t_print *lst)
 {
 	int		k;
 

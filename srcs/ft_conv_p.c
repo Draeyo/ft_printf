@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:19:17 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 14:00:08 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:38:44 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char			*ft_get_beginning(char *str)
 	return (str);
 }
 
-int					ft_conv_p(va_list ap, p_list *lst)
+int					ft_conv_p(va_list ap, t_print *lst)
 {
 	void			*p;
 	char			*str;

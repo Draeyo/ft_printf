@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 14:53:41 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 13:48:46 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:39:18 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_conv_jzu(va_list ap, p_list *lst)
+static int		ft_conv_jzu(va_list ap, t_print *lst)
 {
 	uintmax_t	ju;
 	size_t		zu;
@@ -32,7 +32,7 @@ static int		ft_conv_jzu(va_list ap, p_list *lst)
 	return (-1);
 }
 
-static int		ft_conv_hu(va_list ap, p_list *lst)
+static int		ft_conv_hu(va_list ap, t_print *lst)
 {
 	unsigned char	hhu;
 	unsigned short	hu;
@@ -52,7 +52,7 @@ static int		ft_conv_hu(va_list ap, p_list *lst)
 	return (-1);
 }
 
-static int		ft_conv_lu(va_list ap, p_list *lst)
+static int		ft_conv_lu(va_list ap, t_print *lst)
 {
 	unsigned long long	llu;
 	unsigned long		lu;
@@ -72,7 +72,7 @@ static int		ft_conv_lu(va_list ap, p_list *lst)
 	return (-1);
 }
 
-int				ft_conv_u(va_list ap, p_list *lst)
+int				ft_conv_u(va_list ap, t_print *lst)
 {
 	unsigned int		u;
 	int		count;

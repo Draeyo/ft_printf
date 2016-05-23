@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:26:46 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 15:27:52 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:38:30 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_conv_jzo(va_list ap, p_list *lst)
+static int		ft_conv_jzo(va_list ap, t_print *lst)
 {
 	uintmax_t	jo;
 	size_t		zo;
@@ -32,7 +32,7 @@ static int		ft_conv_jzo(va_list ap, p_list *lst)
 	return (-1);
 }
 
-static int		ft_conv_ho(va_list ap, p_list *lst)
+static int		ft_conv_ho(va_list ap, t_print *lst)
 {
 	unsigned char	hho;
 	unsigned short	ho;
@@ -52,7 +52,7 @@ static int		ft_conv_ho(va_list ap, p_list *lst)
 	return (-1);
 }
 
-static int		ft_conv_lo(va_list ap, p_list *lst)
+static int		ft_conv_lo(va_list ap, t_print *lst)
 {
 	unsigned long long	llo;
 	unsigned long		lo;
@@ -72,7 +72,7 @@ static int		ft_conv_lo(va_list ap, p_list *lst)
 	return (-1);
 }
 
-int				ft_conv_o(va_list ap, p_list *lst)
+int				ft_conv_o(va_list ap, t_print *lst)
 {
 	unsigned int	o;
 	int				count;

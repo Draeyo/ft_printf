@@ -6,13 +6,13 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:41:38 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 15:02:16 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/05/23 17:40:12 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_noconv(p_list *lst)
+int		ft_noconv(t_print *lst)
 {
 	return (ft_padding_str(lst, "%"));
 }
