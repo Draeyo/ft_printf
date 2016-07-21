@@ -1,4 +1,12 @@
-ajouter les flags 0(OK) / ' ' / +(OK)
+ajouter les flags 0(OK) / ' '(OK) / +(OK)
 
  +  -> always place a sign before a number produced by a signed conversion, + override space.
 ' ' -> blank before %d and %i.
+
+----------
+
+prec de 0 avec . seul
+prec et width sur hexa (en particulier avec #)
+%s ?
+prec et width sur octal ?
+flag - sur %d
