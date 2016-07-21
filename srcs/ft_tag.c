@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:28:09 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:41:21 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/07/21 14:00:21 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,5 @@ int		ft_tag(va_list ap, t_print *lst)
 		j = ft_conv_p(ap, lst);
 	else if (lst->conv == 'u' || lst->conv == 'U')
 		j = ft_conv_u(ap, lst);
-	else
-		j = ft_next_arg(ap);
 	return (j);
 }

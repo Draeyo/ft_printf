@@ -1,4 +1,4 @@
-ajouter les flags 0(OK) / ' ' / +
+ajouter les flags 0(OK) / ' ' / +(OK)
 
  +  -> always place a sign before a number produced by a signed conversion, + override space.
 ' ' -> blank before %d and %i.

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:40:38 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/07/21 14:23:42 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char			*ft_width(t_print *lst, int len)
 			flag = '0';
 	if (lst->width <= 0)
 		return (NULL);
+	if ((ft_strchr(lst->flag, '+') || ft_strchr(lst->flag, ' ')) && lst->width > len && ft_plus(lst))
+		lst->width--;
 	i = 0;
 	if (lst->prec < len)
 		lst->prec = 0;
