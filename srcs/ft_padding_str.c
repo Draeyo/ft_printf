@@ -48,12 +48,12 @@ int   ft_padding_str(t_print *lst, char *str)
   if (lst->conv == 'X')
     str = ft_xupper(str);
   if (lst->conv == 's' || lst->conv == 'S')
-    ret += write(1, str, (lst->prec > len && lst->prec > 0) ? lst->prec : len);
+    ret += write(1, str, (lst->prec < len && lst->prec > 0) ? lst->prec : len);
   else
     ret += ft_putstr(str);
   if (ft_strchr(lst->flag, '-'))
     ret += ft_putstr(ft_width(lst, len));
-  return(ret);
+  return (ret);
 }
 
 int   ft_padding_int(t_print *lst, intmax_t nb)
@@ -65,6 +65,7 @@ int   ft_padding_int(t_print *lst, intmax_t nb)
   if (nb < 0)
   {
     nb *= -1;
+	// negatif a changer avec conditions
     ret += ft_putstr("-");
     lst->neg = 1;
   }

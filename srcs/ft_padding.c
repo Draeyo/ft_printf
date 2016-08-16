@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/07/21 14:23:42 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/16 17:16:35 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char			*ft_width(t_print *lst, int len)
 	if ((ft_strchr(lst->flag, '+') || ft_strchr(lst->flag, ' ')) && lst->width > len && ft_plus(lst))
 		lst->width--;
 	i = 0;
-	if (lst->prec < len)
+	if (lst->prec < len && !ft_is_c(lst))
 		lst->prec = 0;
 	if (lst->prec > lst->width)
 		return (NULL);
-	if (lst->prec)
+	if (lst->prec && len > 0)
 		lst->width -= lst->prec;
 	else if ((lst->width -= len) <= 0)
 		return (NULL);
@@ -68,7 +68,7 @@ char			*ft_prec(t_print *lst, int len)
 	int		i;
 
 	i = 0;
-	if (lst->conv == 'p' || lst->conv == 'c')
+	if (lst->conv == 'p' || lst->conv == 'c' || lst->conv == '%')
 		return (NULL);
 	else if (lst->conv == 's')
 		return (ft_strnew_digit(lst->prec, ' '));

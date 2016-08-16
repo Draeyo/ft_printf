@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 16:14:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:39:06 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/16 17:54:22 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int				ft_conv_tag(const char *format, t_print *lst)
 		return (ft_tag_error(lst, format));
 	else if (ft_get_width(lst->tag + k, lst) > -1)
 		k += ft_nblen(lst->width);
-	if (ft_get_prec(lst->tag + k, lst) < -1)
+	if (ft_get_prec(lst->tag + k, lst) == -3)
+		k += 2;
+	else if (ft_get_prec(lst->tag + k, lst) < -1)
 		return (ft_tag_error(lst, format));
 	else if (lst->prec == -1)
 		k++;

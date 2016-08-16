@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:36:33 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/16 17:01:19 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int					ft_validmod(char *str);
 int					ft_after_flag(int c);
 int					ft_after_width(int c);
 int					ft_after_prec(int c);
+int					ft_is_c(t_print *lst);
 
 /*
 ** Options
