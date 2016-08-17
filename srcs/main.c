@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 11:35:36 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/16 17:16:12 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/17 11:24:18 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ int		main(void)
 	ft_printf("--------------------\n");
 	ft_printf("%5.2s is a string\n", "This");
 	printf("%5.2s is a string\n", "This");
+	ft_printf("--------------------\n");
 	return (0);
 }
