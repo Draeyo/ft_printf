@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_padding_str.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/17 14:26:16 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/08/17 16:29:59 by vlistrat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static int  ft_flags(t_print *lst)
@@ -35,10 +47,16 @@ static int    ft_diese_x(t_print *lst, char *str)
 int   ft_padding_str(t_print *lst, char *str)
 {
   int ret;
-  int len;
+  int	len;
 
   ret = ft_diese_o(lst, &str);
   len = (int)ft_strlen(str);
+  if (lst->conv == 'c')
+	  len = 1;
+  if ((lst->conv == 'x' || lst->conv == 'X') && ft_strchr(lst->flag, '#'))
+	  len += 2;
+  else if (lst->neg == 1)
+	  len++;
   if (!ft_strchr(lst->flag, '-'))
     ret += ft_putstr(ft_width(lst, len));
   ret += ft_flags(lst);
@@ -49,6 +67,8 @@ int   ft_padding_str(t_print *lst, char *str)
     str = ft_xupper(str);
   if (lst->conv == 's' || lst->conv == 'S')
     ret += write(1, str, (lst->prec < len && lst->prec > 0) ? lst->prec : len);
+  else if (lst->conv == 'c')
+	  ret += ft_putchar(*str);
   else
     ret += ft_putstr(str);
   if (ft_strchr(lst->flag, '-'))

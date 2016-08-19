@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/17 10:49:18 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/17 11:43:21 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char			*ft_width(t_print *lst, int len)
 	int		flag;
 
 	flag = ' ';
+	if (lst->conv == 'c')
+		len = 1;
 	if (ft_ishex(lst) && !ft_strchr(lst->flag, '0'))
 		lst->prec -= 2;
 	if (lst->conv != 's' && !lst->prec && ft_strchr(lst->flag, '0'))
