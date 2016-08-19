@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 14:26:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/17 16:29:59 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/19 13:58:37 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,19 @@ static int  ft_flags(t_print *lst)
   return (0);
 }
 
-static int   ft_diese_o(t_print *lst, char **str)
+static char   *ft_diese_o(t_print *lst, char *str)
 {
   if ((lst->conv == 'O' || lst->conv == 'o') && ft_strchr(lst->flag, '#'))
-  {
-    *str = ft_strjoin("0", *str);
-    return (1);
-  }
-  return (0);
+    str = ft_strjoin("0", str);
+  return (str);
 }
 
 static int    ft_diese_x(t_print *lst, char *str)
 {
   if (ft_ishex(lst))
   {
-    if (!ft_strstr(str, "0") && ft_strchr(lst->flag, '#') && !ft_strchr(lst->flag, '0'))
+    if (!ft_strstr(str, "0") && ft_strchr(lst->flag, '#') && (!ft_strchr(lst->flag, '0')
+				|| (ft_strchr(lst->flag, '0') && ft_strchr(lst->flag, '-'))))
     {
       lst->prec -= 2;
       return (ft_putstr(lst->hex));
@@ -46,10 +44,11 @@ static int    ft_diese_x(t_print *lst, char *str)
 
 int   ft_padding_str(t_print *lst, char *str)
 {
-  int ret;
+  int 	ret;
   int	len;
 
-  ret = ft_diese_o(lst, &str);
+  ret = 0;
+  str = ft_diese_o(lst, str);
   len = (int)ft_strlen(str);
   if (lst->conv == 'c')
 	  len = 1;

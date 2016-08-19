@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/17 11:43:21 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/19 13:37:55 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char			*ft_width(t_print *lst, int len)
 		len = 1;
 	if (ft_ishex(lst) && !ft_strchr(lst->flag, '0'))
 		lst->prec -= 2;
-	if (lst->conv != 's' && !lst->prec && ft_strchr(lst->flag, '0'))
+	if (lst->conv != 's' && !lst->prec && ft_strchr(lst->flag, '0') && !ft_strchr(lst->flag, '-'))
 			flag = '0';
 	if (lst->width <= 0)
 		return (NULL);
@@ -56,11 +56,12 @@ char			*ft_width(t_print *lst, int len)
 		return (NULL);
 	if (!(width = ft_strnew_digit(lst->width, flag)))
 		return (NULL);
-	if (ft_ishex(lst) && ft_strchr(lst->flag, '0'))
+	if (ft_ishex(lst) && ft_strchr(lst->flag, '0') && !ft_strchr(lst->flag, '-'))
 	{
 		lst->prec -= 2;
 		return (ft_strjoin(lst->hex, ft_strnew_digit(lst->width, flag)));
 	}
+//	else if (ft_ishex(lst) && ft_strchr(lst->flag, '0') && ft_strchr(lst->flag, '-'))
 	return (width);
 }
 

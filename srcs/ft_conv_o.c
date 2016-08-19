@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:26:46 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:38:30 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/19 13:50:17 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int				ft_conv_o(va_list ap, t_print *lst)
 	if (lst->modif == NULL && (lst->conv == 'o' || lst->conv == 'O'))
 	{
 		o = va_arg(ap, unsigned int);
-		return (ft_padding_uint(lst, ft_itoo(o)));
+		return (ft_padding_str(lst, ft_uitooa(o)));
 	}
 	else if ((count = ft_conv_ho(ap, lst)) > 0)
 		return (count);
