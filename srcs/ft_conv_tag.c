@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 16:14:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/16 17:54:22 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/19 15:55:28 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,18 @@ void			lst_init(t_print *lst)
 	lst->len = 0;
 	lst->neg = 0;
 	lst->hex = NULL;
+	lst->str = NULL;
+	lst->wstr = NULL;;
+	lst->pstr = NULL;
 }
 
 int				ft_conv_tag(const char *format, t_print *lst)
 {
 	int		k;
+	int		ret;
 
 	k = 0;
+	ret = 0;
 	lst_init(lst);
 	if (!(lst->tag = ft_get_tag(&format[1], ft_get_last(&format[1], 0))))
 		return (1);
@@ -37,13 +42,18 @@ int				ft_conv_tag(const char *format, t_print *lst)
 		return (ft_tag_error(lst, format));
 	else
 		k += (int)ft_strlen(lst->flag);
-	if (ft_get_width(lst->tag + k, lst) < -1)
+	ret = ft_get_width(lst->tag + k, lst);
+	// faire les autres sur le meme principe
+	if (ret < -1)
 		return (ft_tag_error(lst, format));
-	else if (ft_get_width(lst->tag + k, lst) > -1)
+	else if (ret > -1)
 		k += ft_nblen(lst->width);
-	if (ft_get_prec(lst->tag + k, lst) == -3)
+	ret = ft_get_prec(lst->tag + k, lst);
+//	if (ft_get_prec(lst->tag + k, lst) == -3)
+	if (ret == -3)
 		k += 2;
-	else if (ft_get_prec(lst->tag + k, lst) < -1)
+//	else if (ft_get_prec(lst->tag + k, lst) < -1)
+	else if (ret < -1)
 		return (ft_tag_error(lst, format));
 	else if (lst->prec == -1)
 		k++;

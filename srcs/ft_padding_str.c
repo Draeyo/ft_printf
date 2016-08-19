@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 14:26:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/19 13:58:37 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/19 16:42:51 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int   ft_padding_str(t_print *lst, char *str)
   int	len;
 
   ret = 0;
-  str = ft_diese_o(lst, str);
+  if (lst->conv == 'o' || lst->conv == 'O')
+  	str = ft_diese_o(lst, str);
   len = (int)ft_strlen(str);
   if (lst->conv == 'c')
 	  len = 1;
@@ -56,9 +57,9 @@ int   ft_padding_str(t_print *lst, char *str)
 	  len += 2;
   else if (lst->neg == 1)
 	  len++;
+  ret += ft_flags(lst);
   if (!ft_strchr(lst->flag, '-'))
     ret += ft_putstr(ft_width(lst, len));
-  ret += ft_flags(lst);
   ret += ft_diese_x(lst, str);
   if (lst->conv != 's' && lst->conv != 'S')
     ret += ft_putstr(ft_prec(lst, len));
@@ -69,7 +70,11 @@ int   ft_padding_str(t_print *lst, char *str)
   else if (lst->conv == 'c')
 	  ret += ft_putchar(*str);
   else
+  {
+	  if ((!lst->prec || !ft_strchr(lst->flag, '0')) && ft_plus(lst) && lst->neg == 1)
+		  ret += ft_putchar('-');
     ret += ft_putstr(str);
+  }
   if (ft_strchr(lst->flag, '-'))
     ret += ft_putstr(ft_width(lst, len));
   return (ret);
@@ -84,8 +89,8 @@ int   ft_padding_int(t_print *lst, intmax_t nb)
   if (nb < 0)
   {
     nb *= -1;
-	// negatif a changer avec conditions
-    ret += ft_putstr("-");
+	if (lst->prec || ft_strchr(lst->flag, '0'))
+    	ret += ft_putstr("-");
     lst->neg = 1;
   }
   str = ft_xtoa(nb);

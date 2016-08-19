@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:11:18 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:28:39 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/19 15:42:02 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_s_atoi(char *str)
 	int		mult;
 	int		i;
 
-	i = ft_strlen(str);
+	i = ft_strlen(str) - 1;
 	mult = 1;
 	ret = 0;
 	while (ft_isdigit(str[i]))

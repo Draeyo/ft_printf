@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:35:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/16 16:27:06 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/19 15:58:19 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		ft_get_width(char *tag, t_print *lst)
 			return (0);
 		else if (!ft_after_width(tag[i]))
 			return (-2);
-		lst->width = ft_atoi(str);
+		lst->width = ft_s_atoi(str);
 		free(str);
 		return (1);
 	}
@@ -79,7 +79,7 @@ int		ft_get_prec(char *tag, t_print *lst)
 	}
 	if (!ft_after_prec(tag[i]))
 		return (-2);
-	lst->prec = ft_atoi(str);
+	lst->prec = ft_s_atoi(str);
 	free(str);
 	return (1);
 }
