@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 14:26:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/19 16:42:51 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/21 14:24:12 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int   ft_padding_str(t_print *lst, char *str)
   int	len;
 
   ret = 0;
+  if (ft_zeroflag(lst) && ft_strchr(lst->flag, '0') && !ft_strchr(lst->flag, '-'))
+	  lst->zeroflag = '0';
   if (lst->conv == 'o' || lst->conv == 'O')
   	str = ft_diese_o(lst, str);
   len = (int)ft_strlen(str);
@@ -56,13 +58,21 @@ int   ft_padding_str(t_print *lst, char *str)
   if ((lst->conv == 'x' || lst->conv == 'X') && ft_strchr(lst->flag, '#'))
 	  len += 2;
   else if (lst->neg == 1)
+  {
 	  len++;
-  ret += ft_flags(lst);
+	  lst->prec++;
+  }
+  if (ft_strchr(lst->flag, '0'))
+ 	 ret += ft_flags(lst);
   if (!ft_strchr(lst->flag, '-'))
     ret += ft_putstr(ft_width(lst, len));
+  if (!ft_strchr(lst->flag, '0'))
+  	ret += ft_flags(lst);
   ret += ft_diese_x(lst, str);
   if (lst->conv != 's' && lst->conv != 'S')
     ret += ft_putstr(ft_prec(lst, len));
+  if (lst->prec < 0)
+	  lst->prec = 0;
   if (lst->conv == 'X')
     str = ft_xupper(str);
   if (lst->conv == 's' || lst->conv == 'S')
@@ -71,7 +81,7 @@ int   ft_padding_str(t_print *lst, char *str)
 	  ret += ft_putchar(*str);
   else
   {
-	  if ((!lst->prec || !ft_strchr(lst->flag, '0')) && ft_plus(lst) && lst->neg == 1)
+	  if ((!lst->prec && !ft_strchr(lst->flag, '0')) && ft_plus(lst) && lst->neg == 1)
 		  ret += ft_putchar('-');
     ret += ft_putstr(str);
   }

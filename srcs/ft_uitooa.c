@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 14:37:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 15:15:29 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/21 14:19:50 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ char	*ft_uitooa(uintmax_t nb)
 
 	i = 0;
 	ret = ft_strnew(ft_nblen(nb) * 2);
+	if (nb == 0)
+	{
+		ret[0] = '0';
+		return (ret);
+	}
 	while (nb)
 	{
 		ret[i] = (nb % 8) + 48;

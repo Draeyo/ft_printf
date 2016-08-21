@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/19 14:43:16 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/21 14:07:59 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ typedef struct		s_print
 	int				len;
 	int				neg;
 	char			*hex;
-	char			*str;
-	char			*wstr;
-	char			*pstr;
+	int				zeroflag;
 }					t_print;
 
 /*
@@ -93,6 +91,8 @@ char				*ft_strnew_digit(int nb, int fill);
 int					ft_tag_error(t_print *lst, const char *format);
 int					ft_plus(t_print *lst);
 int					ft_ishex(t_print *lst);
+int					ft_zeroflag(t_print *lst);
+
 /*
 ** strsub du % au tag de conversion
 */

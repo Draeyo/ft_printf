@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:20:32 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/21 14:15:42 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ uintmax_t		ft_itoo(uintmax_t nb)
 
 	ret = 0;
 	mult = 1;
+	if (nb == 0)
+		return (0);
 	while (nb)
 	{
 		ret += nb % 8 * mult;
