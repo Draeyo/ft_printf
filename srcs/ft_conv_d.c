@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:38:16 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:41:53 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int		ft_conv_jzd(va_list ap, t_print *lst)
 
 	jd = 0;
 	zd = 0;
-	if (ft_strstr(lst->modif, "j"))
+	if (lst->modif && ft_strstr(lst->modif, "j"))
 	{
 		jd = va_arg(ap, intmax_t);
 		return(ft_padding_int(lst, jd));
 	}
-	else if (ft_strstr(lst->modif, "z"))
+	else if (lst->modif && ft_strstr(lst->modif, "z"))
 	{
 		zd = va_arg(ap, long long);
 		return(ft_padding_int(lst, zd));
@@ -37,13 +37,12 @@ static int		ft_conv_hd(va_list ap, t_print *lst)
 	char		c;
 	short		s;
 
-	if (ft_strstr(lst->modif, "hh") && (lst->conv == 'd' || lst->conv == 'i'))
+	if (lst->modif && ft_strstr(lst->modif, "hh"))
 	{
 		c = va_arg(ap, int);
 		return (ft_padding_int(lst, (int)c));
 	}
-	else if (ft_strstr(lst->modif, "h") && (lst->conv == 'd'
-				|| lst->conv == 'i'))
+	else if (lst->modif && ft_strstr(lst->modif, "h"))
 	{
 		s = va_arg(ap, int);
 		return (ft_padding_int(lst, s));
@@ -58,13 +57,12 @@ static int		ft_conv_ld(va_list ap, t_print *lst)
 
 	ld = 0;
 	lld = 0;
-	if (ft_strstr(lst->modif, "ll") && (lst->conv == 'd' || lst->conv == 'i'))
+	if (lst->modif && ft_strstr(lst->modif, "ll"))
 	{
 		lld = va_arg(ap, long long);
 		return (ft_padding_int(lst, lld));
 	}
-	else if (ft_strstr(lst->modif, "l") && (lst->conv == 'd'
-				|| lst->conv == 'i'))
+	else if (lst->modif && ft_strstr(lst->modif, "l"))
 	{
 		ld = va_arg(ap, long);
 		return (ft_padding_int(lst, ld));
@@ -84,6 +82,8 @@ int				ft_conv_d(va_list ap, t_print *lst)
 	if (lst->modif == NULL && (lst->conv == 'd' || lst->conv == 'i'))
 	{
 		d = va_arg(ap, int);
+		if (d == 0 && lst->zeroprec)
+			return (ft_padding_str(lst, ""));
 		return (ft_padding_int(lst, d));
 	}
 	else if (lst->modif == NULL && lst->conv == 'D')

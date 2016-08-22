@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 16:14:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/21 14:08:51 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:22:24 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void			lst_init(t_print *lst)
 	lst->neg = 0;
 	lst->hex = NULL;
 	lst->zeroflag = ' ';
+	lst->zeroprec = 0;
 }
 
 int				ft_conv_tag(const char *format, t_print *lst)
@@ -53,9 +54,9 @@ int				ft_conv_tag(const char *format, t_print *lst)
 //	else if (ft_get_prec(lst->tag + k, lst) < -1)
 	else if (ret < -1)
 		return (ft_tag_error(lst, format));
-	else if (lst->prec == -1)
+	else if (ret == -1)
 		k++;
-	else if (lst->prec > 0)
+	else if (ret > 0)
 		k += ft_nblen(lst->prec) + 1;
 	if (ft_get_modif(lst->tag + k, lst) < 0)
 		return (ft_tag_error(lst, format));

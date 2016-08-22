@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:22:42 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:40:50 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:04:12 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int		ft_printf(const char *format, ...)
 		}
 		else
 		{
-			ft_putchar(format[i]);
-			j++;
+			j += ft_putchar(format[i]);
 			i++;
 		}
 	}

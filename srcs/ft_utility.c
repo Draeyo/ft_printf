@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 12:15:25 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/21 14:07:02 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:07:33 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		ft_tag_error(t_print *lst, const char *format)
 	i = 0;
 	lst->conv = '0';
 	lst->tag = NULL;
-	ft_putendl_fd(lst->tag, 2);
 	while (format[i] != ' ')
 		i++;
 	return (++i);

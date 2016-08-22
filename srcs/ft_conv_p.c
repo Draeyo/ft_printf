@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:19:17 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 17:38:44 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/22 11:56:28 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ int					ft_conv_p(va_list ap, t_print *lst)
 	pnt = ft_strcat(pnt, str);
 	free(str);
 	free(pnt);
+	if (stock == 0x0)
+		return (ft_padding_str(lst, "0x0"));
 	return (ft_padding_str(lst, pnt));
 }

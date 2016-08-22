@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:26:46 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/19 13:50:17 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:43:45 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int		ft_conv_jzo(va_list ap, t_print *lst)
 
 	jo = 0;
 	zo = 0;
-	if (ft_strstr(lst->modif, "j"))
+	if (lst->modif && ft_strstr(lst->modif, "j"))
 	{
 		jo = va_arg(ap, uintmax_t);
 		return (ft_padding_str(lst, ft_uitooa(jo)));
 	}
-	else if (ft_strstr(lst->modif, "z"))
+	else if (lst->modif && ft_strstr(lst->modif, "z"))
 	{
 		zo = va_arg(ap, size_t);
 		return(ft_padding_str(lst, ft_uitooa(zo)));
@@ -39,12 +39,12 @@ static int		ft_conv_ho(va_list ap, t_print *lst)
 
 	hho = 0;
 	ho = 0;
-	if (ft_strstr(lst->modif, "hh"))
+	if (lst->modif && ft_strstr(lst->modif, "hh"))
 	{
 		hho = va_arg(ap, unsigned int);
 		return (ft_padding_uint(lst, ft_itoo(hho)));
 	}
-	else if (ft_strstr(lst->modif, "h"))
+	else if (lst->modif && ft_strstr(lst->modif, "h"))
 	{
 		ho = va_arg(ap, unsigned int);
 		return (ft_padding_uint(lst, ft_itoo(ho)));
@@ -59,12 +59,12 @@ static int		ft_conv_lo(va_list ap, t_print *lst)
 
 	llo = 0;
 	lo = 0;
-	if (ft_strstr(lst->modif, "ll"))
+	if (lst->modif && ft_strstr(lst->modif, "ll"))
 	{
 		llo = va_arg(ap, unsigned long long);
 		return (ft_padding_str(lst, ft_uitooa(llo)));
 	}
-	else if (ft_strstr(lst->modif, "l"))
+	else if (lst->modif && ft_strstr(lst->modif, "l"))
 	{
 		lo = va_arg(ap, unsigned long);
 		return (ft_padding_str(lst, ft_uitooa(lo)));
@@ -82,6 +82,8 @@ int				ft_conv_o(va_list ap, t_print *lst)
 	if (lst->modif == NULL && (lst->conv == 'o' || lst->conv == 'O'))
 	{
 		o = va_arg(ap, unsigned int);
+		if (o == 0 && lst->zeroprec)
+			return (ft_padding_str(lst, ""));
 		return (ft_padding_str(lst, ft_uitooa(o)));
 	}
 	else if ((count = ft_conv_ho(ap, lst)) > 0)

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/21 14:07:59 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/22 13:28:42 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_print
 	int				neg;
 	char			*hex;
 	int				zeroflag;
+	int				zeroprec;
 }					t_print;
 
 /*

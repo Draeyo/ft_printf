@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:35:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/19 15:58:19 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/22 14:21:09 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,19 @@ int		ft_get_prec(char *tag, t_print *lst)
 	i = 0;
 	if (tag[i] != '.')
 		return (0);
-	else if (tag[i] == '.' && tag[i + 1] == '0')
-		return (-3);
+	else if (tag[i] == '.' && (tag[i + 1] == '0' || ft_after_prec(tag[i + 1])))
+	{
+		if (tag[i + 1] == '0')
+		{
+			lst->zeroprec = 1;
+			return (-3);
+		}
+		else if (ft_after_prec(tag[i + 1]))
+		{
+			lst->zeroprec = 1;
+			return (-1);
+		}
+	}
 	else
 		tag = &tag[1];
 	if (!ft_isdigit(*tag))
