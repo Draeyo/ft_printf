@@ -1,22 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_conv_p.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/01/11 13:19:17 by vlistrat          #+#    #+#             */
+/*   Updated: 2016/08/25 14:05:09 by vlistrat         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-// HOME
-
-int	ft_conv_p(va_list ap, t_print *lst)
+int					ft_conv_p(va_list ap, t_print *lst)
 {
-	void		*p;
-	unsigned int	stock;
-	char		*ret;
+	unsigned long	p;
 
-	stock = 0;
-	ret = ft_strnew(30);
-	p = va_arg(ap, void*);
-	if (!p)
-		HEX = "0x";
-	else
-		HEX = "0x7fff";
-	stock = (unsigned int)p;
+	p = va_arg(ap, unsigned long);
+	HEX = "0x";
 	if (!ZEROP)
-		ret = ft_itohex(stock);
-	return (ft_padding_str(lst, ret));
+		STR = ft_itohex(p);
+	return (ft_padding_str(lst, STR));
 }

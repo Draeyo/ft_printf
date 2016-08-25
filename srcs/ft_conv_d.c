@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/23 14:28:15 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/25 14:36:08 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int		ft_conv_ld(va_list ap, t_print *lst)
 		lld = va_arg(ap, long long);
 		return (ft_padding_int(lst, lld));
 	}
-	else if (lst->modif && ft_strstr(lst->modif, "l"))
+	else if ((MODIF && ft_strstr(lst->modif, "l")) || CONV == 'D')
 	{
 		ld = va_arg(ap, long);
 		return (ft_padding_int(lst, ld));
@@ -77,18 +77,18 @@ int				ft_conv_d(va_list ap, t_print *lst)
 
 	d = 0;
 	ud = 0;
-	if (lst->modif == NULL && (lst->conv == 'd' || lst->conv == 'i'))
+	if (!MODIF && (CONV == 'd' || CONV == 'i'))
 	{
 		d = va_arg(ap, int);
-		if (d == 0 && lst->zeroprec)
+		if (d == 0 && ZEROP)
 			return (ft_padding_str(lst, ""));
 		return (ft_padding_int(lst, d));
 	}
-	else if (lst->modif == NULL && lst->conv == 'D')
-	{
-		ud = va_arg(ap, unsigned int);
-		return (ft_padding_str(lst, ft_uxtoa(ud)));
-	}
+//	else if (!MODIF && CONV == 'D')
+//	{
+//		ud = va_arg(ap, unsigned int);
+//		return (ft_padding_str(lst, ft_uxtoa(ud)));
+//	}
 	if ((COUNT = ft_conv_hd(ap, lst)) > 0)
 		return (COUNT);
 	else if ((COUNT = ft_conv_ld(ap, lst)) > 0)

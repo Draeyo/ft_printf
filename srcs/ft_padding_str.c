@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 14:26:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/23 15:29:16 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/25 16:20:56 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		ft_flags(t_print *lst)
 
 static char		*ft_diese_o(t_print *lst, char *str)
 {
-	if ((CONV == 'O' || CONV == 'o') && ft_strchr(FLAG, '#'))
+	if ((CONV == 'O' || CONV == 'o') && ft_strchr(FLAG, '#') && str[0] != '0')
 		str = ft_strjoin("0", str);
 	return (str);
 }
@@ -40,34 +40,40 @@ static int		ft_diese_x(t_print *lst, char *str)
 			return (ft_putstr(HEX));
 		}
 	}
-	// HOME
 	else if (CONV == 'p')
-		return(ft_putstr(HEX));
+		return (ft_putstr(HEX));
+	else if ((PREC && PREC < WIDTH) && ft_plus(lst) && NEG == 1 && !MIN)
+	{
+		MIN = 1;
+		return (ft_putstr("-"));
+	}
 	return (0);
 }
 
-static int		ft_short_pstr(t_print *lst, char *str, int ret, int len)
+static int		ft_short_pstr(t_print *lst, char *str, int ret)
 {
 	if (ft_strchr(FLAG, '0'))
 		ret += ft_flags(lst);
 	if (!ft_strchr(FLAG, '-'))
-		ret += ft_putstr(ft_width(lst, len));
+		ret += ft_putstr(ft_width(lst, LEN));
 	if (!ft_strchr(FLAG, '0'))
 		ret += ft_flags(lst);
 	ret += ft_diese_x(lst, str);
 	if (CONV != 's' && CONV != 'S')
-		ret += ft_putstr(ft_prec(lst, len));
+		ret += ft_putstr(ft_prec(lst, LEN));
 	if (PREC < 0)
 		PREC = 0;
 	if (CONV == 'X')
 		str = ft_xupper(str);
 	if (CONV == 's' || CONV == 'S')
-		ret += write(1, str, (PREC < len && PREC > 0) ? PREC : len);
+		ret += write(1, str, (PREC < LEN && PREC > 0) ? PREC : LEN);
+	else if (CONV == 'c' && *str == '\0')
+		ret += write(1, "\0", 1); 
 	else if (CONV == 'c')
 		ret += ft_putchar(*str);
 	else
 	{
-		if ((!PREC && !ft_strchr(FLAG, '0')) && ft_plus(lst) && NEG == 1)
+		if ((!PREC && !ft_strchr(FLAG, '0')) && ft_plus(lst) && NEG == 1 && !MIN)
 			ret += ft_putchar('-');
 		ret += ft_putstr(str);
 	}
@@ -77,25 +83,27 @@ static int		ft_short_pstr(t_print *lst, char *str, int ret, int len)
 int				ft_padding_str(t_print *lst, char *str)
 {
 	int		ret;
-	int		len;
 
 	ret = 0;
 	if (ft_zeroflag(lst) && ft_strchr(FLAG, '0') && !ft_strchr(FLAG, '-'))
 		ZEROF = '0';
 	if (CONV == 'o' || CONV == 'O')
 		str = ft_diese_o(lst, str);
-	len = (int)ft_strlen(str);
+	LEN = (int)ft_strlen(str);
 	if (CONV == 'c')
-		len = 1;
-	if ((CONV == 'x' || CONV == 'X') && ft_strchr(FLAG, '#'))
-		len += 2;
+		LEN = 1;
+	if (CONV == 's' && PREC > LEN)
+		PREC = 0;
+	if (((CONV == 'x' || CONV == 'X') && ft_strchr(FLAG, '#')) || CONV == 'p')
+		LEN += 2;
 	else if (NEG == 1)
 	{
-		len++;
+		LEN++;
 		PREC++;
 	}
-	ret += ft_short_pstr(lst, str, ret, len);
+	ret += ft_short_pstr(lst, str, ret);
 	if (ft_strchr(FLAG, '-'))
-		ret += ft_putstr(ft_width(lst, len));
+		ret += ft_putstr(ft_width(lst, LEN));
+	free(STR);
 	return (ret);
 }

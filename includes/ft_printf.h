@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/23 15:50:34 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/25 12:40:45 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # define ZEROF lst->zeroflag
 # define ZEROP lst->zeroprec
 # define COUNT lst->count
-# define STR lst->str;
+# define STR lst->str
+# define MIN lst->min
 
 /*
 ** strcture de recuperation du tag entier puis des elements du tag 1 par 1
@@ -52,7 +53,8 @@ typedef struct		s_print
 	int				zeroflag;
 	int				zeroprec;
 	int				count;
-	char				*str;
+	char			*str;
+	int				min;
 }					t_print;
 
 /*

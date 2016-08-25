@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/23 12:58:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/23 13:02:33 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/25 14:19:48 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ int		ft_padding_int(t_print *lst, intmax_t nb)
 	if (nb < 0)
 	{
 		nb *= -1;
-		if (PREC || ft_strchr(FLAG, '0'))
+		if ((PREC && PREC >= WIDTH) || ft_strchr(FLAG, '0'))
+		{
+			MIN = 1;
 			ret += ft_putstr("-");
+		}
 		NEG = 1;
 	}
 	str = ft_xtoa(nb);
