@@ -33,6 +33,7 @@
 # define ZEROF lst->zeroflag
 # define ZEROP lst->zeroprec
 # define COUNT lst->count
+# define STR lst->str;
 
 /*
 ** strcture de recuperation du tag entier puis des elements du tag 1 par 1
@@ -51,6 +52,7 @@ typedef struct		s_print
 	int				zeroflag;
 	int				zeroprec;
 	int				count;
+	char				*str;
 }					t_print;
 
 /*

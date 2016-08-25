@@ -40,6 +40,9 @@ static int		ft_diese_x(t_print *lst, char *str)
 			return (ft_putstr(HEX));
 		}
 	}
+	// HOME
+	else if (CONV == 'p')
+		return(ft_putstr(HEX));
 	return (0);
 }
 

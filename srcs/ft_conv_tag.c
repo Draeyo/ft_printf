@@ -26,6 +26,8 @@ void			lst_init(t_print *lst)
 	lst->zeroflag = ' ';
 	lst->zeroprec = 0;
 	lst->count = 0;
+	//HOME
+	lst->str = ft_strnew(100);
 }
 
 static int		ft_short_ctag(t_print *lst, int k)
