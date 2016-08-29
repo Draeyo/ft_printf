@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 14:26:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/25 16:20:56 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 09:46:21 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ static int		ft_short_pstr(t_print *lst, char *str, int ret)
 	if (CONV == 's' || CONV == 'S')
 		ret += write(1, str, (PREC < LEN && PREC > 0) ? PREC : LEN);
 	else if (CONV == 'c' && *str == '\0')
-		ret += write(1, "\0", 1); 
+		ret += write(1, "\0", 1);
 	else if (CONV == 'c')
 		ret += ft_putchar(*str);
 	else
 	{
-		if ((!PREC && !ft_strchr(FLAG, '0')) && ft_plus(lst) && NEG == 1 && !MIN)
+		if ((!PREC && !ft_strchr(FLAG, '0')) && ft_plus(lst)
+				&& NEG == 1 && !MIN)
 			ret += ft_putchar('-');
 		ret += ft_putstr(str);
 	}
@@ -86,6 +87,8 @@ int				ft_padding_str(t_print *lst, char *str)
 
 	ret = 0;
 	if (ft_zeroflag(lst) && ft_strchr(FLAG, '0') && !ft_strchr(FLAG, '-'))
+		ZEROF = '0';
+	else if ((CONV == 's' || CONV == 'S') && ft_strchr(FLAG, '0'))
 		ZEROF = '0';
 	if (CONV == 'o' || CONV == 'O')
 		str = ft_diese_o(lst, str);
