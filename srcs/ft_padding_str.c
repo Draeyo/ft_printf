@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 14:26:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 09:46:21 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 14:09:50 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,7 @@ static int		ft_short_pstr(t_print *lst, char *str, int ret)
 		PREC = 0;
 	if (CONV == 'X')
 		str = ft_xupper(str);
-	if (CONV == 's' || CONV == 'S')
-		ret += write(1, str, (PREC < LEN && PREC > 0) ? PREC : LEN);
-	else if (CONV == 'c' && *str == '\0')
-		ret += write(1, "\0", 1);
-	else if (CONV == 'c')
-		ret += ft_putchar(*str);
-	else
-	{
-		if ((!PREC && !ft_strchr(FLAG, '0')) && ft_plus(lst)
-				&& NEG == 1 && !MIN)
-			ret += ft_putchar('-');
-		ret += ft_putstr(str);
-	}
+	ret = ft_print(lst, str, ret);
 	return (ret);
 }
 
@@ -92,7 +80,8 @@ int				ft_padding_str(t_print *lst, char *str)
 		ZEROF = '0';
 	if (CONV == 'o' || CONV == 'O')
 		str = ft_diese_o(lst, str);
-	LEN = (int)ft_strlen(str);
+	if (CONV != 'S' && CONV != 'C')
+		LEN = (int)ft_strlen(str);
 	if (CONV == 'c')
 		LEN = 1;
 	if (CONV == 's' && PREC > LEN)
@@ -100,10 +89,7 @@ int				ft_padding_str(t_print *lst, char *str)
 	if (((CONV == 'x' || CONV == 'X') && ft_strchr(FLAG, '#')) || CONV == 'p')
 		LEN += 2;
 	else if (NEG == 1)
-	{
-		LEN++;
-		PREC++;
-	}
+		ft_short_padneg(lst);
 	ret += ft_short_pstr(lst, str, ret);
 	if (ft_strchr(FLAG, '-'))
 		ret += ft_putstr(ft_width(lst, LEN));

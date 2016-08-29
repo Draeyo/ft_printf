@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/25 12:40:45 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 15:34:09 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <wchar.h>
 # include <limits.h>
 # include "libft.h"
+
+# define DEBUG ft_putendl("DEBUG");
 
 # define TAG lst->tag
 # define FLAG lst->flag
@@ -35,6 +37,8 @@
 # define COUNT lst->count
 # define STR lst->str
 # define MIN lst->min
+# define WSTR lst->wstr
+# define WC lst->wc
 
 /*
 ** strcture de recuperation du tag entier puis des elements du tag 1 par 1
@@ -54,6 +58,8 @@ typedef struct		s_print
 	int				zeroprec;
 	int				count;
 	char			*str;
+	wchar_t			*wstr;
+	wchar_t			wc;
 	int				min;
 }					t_print;
 
@@ -99,8 +105,8 @@ char				*ft_strrev(char *str);
 int					ft_nblen(intmax_t nb);
 int					ft_uxnblen(uintmax_t nb);
 void				lst_init(t_print *lst);
-void				ft_putwchar_fd(wchar_t c, int fd);
-void				ft_putwstr_fd(wchar_t *wstr, int fd);
+int					ft_putwchar_fd(wchar_t c, int fd);
+int					ft_putwstr_fd(wchar_t *wstr, int fd);
 char				*ft_strnewcpy(char *str);
 char				*ft_strcut(char *str, int n);
 char				*ft_xupper(char *str);
@@ -110,6 +116,10 @@ int					ft_plus(t_print *lst);
 int					ft_ishex(t_print *lst);
 int					ft_zeroflag(t_print *lst);
 int					ft_zprec(t_print *lst, char *tag, int i);
+void				ft_short_padneg(t_print *lst);
+int					ft_spstr_min(t_print *lst);
+int					ft_print(t_print *lst, char *str, int ret);
+int					ft_wstrlen(wchar_t *wstr);
 
 /*
 ** strsub du % au tag de conversion

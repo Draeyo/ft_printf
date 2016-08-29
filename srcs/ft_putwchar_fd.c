@@ -6,38 +6,53 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:31 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/02/17 17:09:34 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 15:33:04 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putwchar_fd(wchar_t c, int fd)
+static int		ft_short_pwchar(wchar_t c, int fd)
 {
+	if (c == 0)
+		return (write(fd, "\0", 1));
+	return (0);
+}
+
+int				ft_putwchar_fd(wchar_t c, int fd)
+{
+	int		ret;
+
+	ret = ft_short_pwchar(c, fd);
 	if (c <= 0x7F)
-		ft_putchar_fd(c, fd);
+		ret += ft_putchar_fd(c, fd);
 	else if (c <= 0x7FF)
 	{
-		ft_putchar_fd((c >> 6) + 0xC0, fd);
-		ft_putchar_fd((c & 0x3F) + 0x80, fd);
+		ret += ft_putchar_fd((c >> 6) + 0xC0, fd);
+		ret += ft_putchar_fd((c & 0x3F) + 0x80, fd);
 	}
 	else if (c <= 0xFFFF)
 	{
-		ft_putchar_fd((c >> 12) + 0xE0, fd);
-		ft_putchar_fd(((c >> 6) & 0x3F) + 0x80, fd);
-		ft_putchar_fd((c & 0x3F) + 0x80, fd);
+		ret += ft_putchar_fd((c >> 12) + 0xE0, fd);
+		ret += ft_putchar_fd(((c >> 6) & 0x3F) + 0x80, fd);
+		ret += ft_putchar_fd((c & 0x3F) + 0x80, fd);
 	}
 	else if (c <= 0x10FFFF)
 	{
-		ft_putchar_fd((c >> 18) + 0xF0, fd);
-		ft_putchar_fd(((c >> 12) & 0x3F) + 0x80, fd);
-		ft_putchar_fd(((c >> 6) & 0x3F) + 0x80, fd);
-		ft_putchar_fd((c & 0x3F) + 0x80, fd);
+		ret += ft_putchar_fd((c >> 18) + 0xF0, fd);
+		ret += ft_putchar_fd(((c >> 12) & 0x3F) + 0x80, fd);
+		ret += ft_putchar_fd(((c >> 6) & 0x3F) + 0x80, fd);
+		ret += ft_putchar_fd((c & 0x3F) + 0x80, fd);
 	}
+	return (ret);
 }
 
-void	ft_putwstr_fd(wchar_t *wstr, int fd)
+int				ft_putwstr_fd(wchar_t *wstr, int fd)
 {
+	int		ret;
+
+	ret = 0;
 	while (*wstr)
-		ft_putwchar_fd(*wstr++, fd);
+		ret += ft_putwchar_fd(*wstr++, fd);
+	return (ret);
 }

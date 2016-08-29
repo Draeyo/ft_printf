@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:58:48 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 09:21:24 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 15:15:44 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,31 @@
 
 int		ft_conv_ws(va_list ap, t_print *lst)
 {
-	wchar_t		*wstr;
-
-	wstr = (wchar_t*)malloc(sizeof(*wstr) * 50);
-	if ((lst->modif == NULL && lst->conv == 'S')
-			|| (ft_strstr(lst->modif, "l") && lst->conv == 's'))
-		wstr = va_arg(ap, wchar_t*);
-	if (wstr)
-		ft_putwstr_fd(wstr, 1);
+	if ((CONV == 'S') || (MODIF && ft_strstr(MODIF, "l") && CONV == 's'))
+		WSTR = va_arg(ap, wchar_t*);
+	if (WSTR)
+	{
+		LEN = ft_wstrlen(WSTR);
+		return (ft_padding_str(lst, ""));
+	}
 	else
+	{
+		LEN = 6;
 		return (ft_padding_str(lst, "(null)"));
-	return (ft_wstrlen(wstr));
+	}
+	return (0);
 }
 
 int		ft_conv_wc(va_list ap, t_print *lst)
 {
 	wint_t		wint;
-	wchar_t		wbuf;
 
 	wint = 0;
-	if ((lst->modif == NULL && lst->conv == 'C')
-			|| (ft_strstr(lst->modif, "l") && lst->conv == 'c'))
+	if ((CONV == 'C') || (ft_strstr(MODIF, "l") && CONV == 'c'))
 		wint = va_arg(ap, wint_t);
-	wbuf = wint;
-	ft_putwchar_fd(wbuf, 1);
-	return (1);
+	WC = wint;
+	LEN = 1;
+	if (wint == 0)
+		return (ft_putwchar_fd(WC, 1));
+	return (ft_padding_str(lst, ""));
 }

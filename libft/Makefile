@@ -6,7 +6,7 @@
 #    By: vlistrat <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 13:19:26 by vlistrat          #+#    #+#              #
-#    Updated: 2016/08/23 18:48:50 by vlistrat         ###   ########.fr        #
+#    Updated: 2016/08/29 14:15:06 by vlistrat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,9 +68,7 @@ SRC = ft_atoi.c \
 	  ft_lstdel.c \
 	  ft_lstdelone.c \
 	  ft_lstiter.c \
-	  ft_lstnew.c \
-	  ft_wstrcpy.c \
-	  ft_wstrlen.c
+	  ft_lstnew.c
 
 OBJ = $(SRC:.c=.o)
 

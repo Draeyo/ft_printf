@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:26:46 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 09:38:55 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 15:08:09 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ int				ft_conv_o(va_list ap, t_print *lst)
 			return (ft_padding_str(lst, ""));
 		return (ft_padding_str(lst, ft_uitooa(o)));
 	}
-	else if ((count = ft_conv_ho(ap, lst)) > 0)
-		return (count);
 	else if ((count = ft_conv_lo(ap, lst)) > 0)
+		return (count);
+	else if ((count = ft_conv_ho(ap, lst)) > 0)
 		return (count);
 	else if ((count = ft_conv_jzo(ap, lst)) > 0)
 		return (count);

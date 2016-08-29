@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:52:32 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/05/23 13:07:00 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 14:15:31 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct		s_list
 }					t_list;
 
 int					ft_putchar(char c);
-void				ft_putchar_fd(char c, int fd);
+int					ft_putchar_fd(char c, int fd);
 int					ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl(char const *s);
@@ -82,7 +82,5 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-wchar_t				*ft_wstrcpy(wchar_t *dst, const char *src);
-void				ft_putwstr(wchar_t const *s);
-size_t				ft_wstrlen(const wchar_t *s);
+
 #endif

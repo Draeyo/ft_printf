@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/30 12:15:25 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/23 15:01:36 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 11:56:18 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,17 @@ int		ft_zprec(t_print *lst, char *tag, int i)
 		}
 	}
 	return (1);
+}
+
+void	ft_short_padneg(t_print *lst)
+{
+	LEN++;
+	PREC++;
+}
+
+int		ft_spstr_min(t_print *lst)
+{
+	if ((!PREC && !ft_strchr(FLAG, '0')) && ft_plus(lst) && NEG == 1 && !MIN)
+		return (1);
+	return (0);
 }

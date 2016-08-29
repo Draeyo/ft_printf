@@ -7,7 +7,8 @@ SRC_NAME = ft_calc_tag.c ft_conv_c.c ft_conv_d.c ft_conv_o.c ft_conv_p.c \
 	  ft_get_tag.c ft_itohex.c ft_itoo.c ft_nblen.c ft_noconv.c \
 	  ft_padding.c ft_padding_int.c ft_padding_str.c ft_printf.c ft_putwchar_fd.c \
 	  ft_s_atoi.c ft_strcut.c ft_strnewcpy.c ft_strupper.c ft_tag.c ft_uitooa.c \
-	  ft_utility.c ft_uxtoa.c ft_valid.c ft_valid2.c ft_xtoa.c ft_xupper.c
+	  ft_utility.c ft_uxtoa.c ft_valid.c ft_valid2.c ft_xtoa.c ft_xupper.c \
+	  ft_utility2.c
 
 LIBFT_PATH = ./libft/
 
@@ -20,8 +21,7 @@ LIBFT_NAME = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdi
 			 ft_strcpy.c ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c \
 			 ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c ft_strncat.c \
 			 ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c \
-			 ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c \
-			 ft_wstrcpy.c ft_wstrlen.c
+			 ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c
 	  
 CC = @gcc
 

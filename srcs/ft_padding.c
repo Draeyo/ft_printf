@@ -6,13 +6,19 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 09:44:48 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/29 14:38:50 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_strnew_digit(int nb, int fill)
+static	char	*ft_short_hex(t_print *lst)
+{
+	PREC -= 2;
+	return (ft_strjoin(HEX, ft_strnew_digit(WIDTH, ZEROF)));
+}
+
+char			*ft_strnew_digit(int nb, int fill)
 {
 	char	*str;
 	int		i;
@@ -28,7 +34,7 @@ char		*ft_strnew_digit(int nb, int fill)
 	return (str);
 }
 
-char		*ft_width(t_print *lst, int len)
+char			*ft_width(t_print *lst, int len)
 {
 	char	*width;
 	int		i;
@@ -51,20 +57,17 @@ char		*ft_width(t_print *lst, int len)
 	if (!(width = ft_strnew_digit(WIDTH, ZEROF)))
 		return (NULL);
 	if (ft_ishex(lst) && ft_strchr(FLAG, '0') && !ft_strchr(FLAG, '-'))
-	{
-		PREC -= 2;
-		return (ft_strjoin(HEX, ft_strnew_digit(WIDTH, ZEROF)));
-	}
+		return (ft_short_hex(lst));
 	return (width);
 }
 
-char		*ft_prec(t_print *lst, int len)
+char			*ft_prec(t_print *lst, int len)
 {
 	char	*prec;
 	int		i;
 
 	i = 0;
-	if (CONV == 'c' || CONV == '%')
+	if (CONV == 'c' || CONV == 'C' || CONV == '%')
 		return (NULL);
 	if (CONV == 'p' && PREC > len)
 		PREC += 2;
