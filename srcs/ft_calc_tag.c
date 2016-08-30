@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:35:15 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/23 15:02:34 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 14:09:56 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_get_flag(char *tag, t_print *lst)
 		i++;
 	if (i == 0 || i == (int)ft_strlen(tag))
 	{
-		lst->flag = "\0";
+		FLAG = "\0";
 		return (0);
 	}
 	else if (!ft_after_flag(tag[i]))
@@ -33,11 +33,11 @@ int		ft_get_flag(char *tag, t_print *lst)
 
 int		ft_get_width(char *tag, t_print *lst)
 {
-	char	*str;
+	char	str[20];
 	int		i;
 
 	i = 0;
-	str = ft_strnew(20);
+	ft_bzero(str, 20);
 	if (tag[i] != '.' && ft_isdigit(tag[i]))
 	{
 		while (ft_isdigit(tag[i]))
@@ -45,12 +45,11 @@ int		ft_get_width(char *tag, t_print *lst)
 			str[i] = tag[i];
 			i++;
 		}
+		WIDTH = ft_s_atoi(str);
 		if (i == 0 || i == (int)ft_strlen(tag))
 			return (0);
 		else if (!ft_after_width(tag[i]))
 			return (-2);
-		WIDTH = ft_s_atoi(str);
-		free(str);
 		return (1);
 	}
 	else
@@ -59,13 +58,13 @@ int		ft_get_width(char *tag, t_print *lst)
 
 int		ft_get_prec(char *tag, t_print *lst)
 {
-	char	*str;
+	char	str[20];
 	int		i;
 	int		temp;
 
-	str = ft_strnew(20);
 	i = 0;
 	temp = 0;
+	ft_bzero(str, 20);
 	if ((temp = ft_zprec(lst, tag, i)) <= 0)
 		return (temp);
 	else
@@ -77,10 +76,9 @@ int		ft_get_prec(char *tag, t_print *lst)
 		str[i] = tag[i];
 		i++;
 	}
+	PREC = ft_s_atoi(str);
 	if (!ft_after_prec(tag[i]))
 		return (-2);
-	PREC = ft_s_atoi(str);
-	free(str);
 	return (1);
 }
 
@@ -89,21 +87,21 @@ int		ft_get_modif(char *tag, t_print *lst)
 	char	*str;
 	int		i;
 
-	str = ft_strnew(3);
 	i = 0;
 	if (!ft_ismod(tag[i]))
 		return (0);
+	str = ft_strnew(3);
 	while (i < 2 && ft_ismod(tag[i]))
 	{
 		str[i] = tag[i];
 		i++;
 	}
+	MODIF = ft_strdup(str);
+	free(str);
 	if (i == 0)
 		return (0);
 	else if (!ft_isconv(tag[i]))
 		return (-1);
-	MODIF = ft_strdup(str);
-	free(str);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 12:17:55 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 14:42:50 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 13:49:42 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int		ft_conv_jzd(va_list ap, t_print *lst)
 
 	jd = 0;
 	zd = 0;
-	if (lst->modif && ft_strstr(lst->modif, "j"))
+	if (MODIF && ft_strstr(MODIF, "j"))
 	{
 		jd = va_arg(ap, intmax_t);
 		return (ft_padding_int(lst, jd));
 	}
-	else if (lst->modif && ft_strstr(lst->modif, "z"))
+	else if (MODIF && ft_strstr(MODIF, "z"))
 	{
 		zd = va_arg(ap, long long);
 		return (ft_padding_int(lst, zd));
@@ -37,12 +37,12 @@ static int		ft_conv_hd(va_list ap, t_print *lst)
 	char		c;
 	short		s;
 
-	if (lst->modif && ft_strstr(lst->modif, "hh"))
+	if (MODIF && ft_strstr(MODIF, "hh"))
 	{
 		c = va_arg(ap, int);
 		return (ft_padding_int(lst, (int)c));
 	}
-	else if (lst->modif && ft_strstr(lst->modif, "h"))
+	else if (MODIF && ft_strstr(MODIF, "h"))
 	{
 		s = va_arg(ap, int);
 		return (ft_padding_int(lst, s));
@@ -57,12 +57,12 @@ static int		ft_conv_ld(va_list ap, t_print *lst)
 
 	ld = 0;
 	lld = 0;
-	if (lst->modif && ft_strstr(lst->modif, "ll"))
+	if (MODIF && ft_strstr(MODIF, "ll"))
 	{
 		lld = va_arg(ap, long long);
 		return (ft_padding_int(lst, lld));
 	}
-	else if ((MODIF && ft_strstr(lst->modif, "l")) || CONV == 'D')
+	else if ((MODIF && ft_strstr(MODIF, "l")) || CONV == 'D')
 	{
 		ld = va_arg(ap, long);
 		return (ft_padding_int(lst, ld));

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 15:34:09 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 14:38:55 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <limits.h>
 # include "libft.h"
 
-# define DEBUG ft_putendl("DEBUG");
-
 # define TAG lst->tag
 # define FLAG lst->flag
 # define WIDTH lst->width
@@ -35,10 +33,12 @@
 # define ZEROF lst->zeroflag
 # define ZEROP lst->zeroprec
 # define COUNT lst->count
-# define STR lst->str
 # define MIN lst->min
 # define WSTR lst->wstr
 # define WC lst->wc
+# define WDT lst->wdt
+# define PRC lst->prc
+# define STR lst->str
 
 /*
 ** strcture de recuperation du tag entier puis des elements du tag 1 par 1
@@ -61,6 +61,8 @@ typedef struct		s_print
 	wchar_t			*wstr;
 	wchar_t			wc;
 	int				min;
+	char			*wdt;
+	char			*prc;
 }					t_print;
 
 /*
@@ -120,6 +122,8 @@ void				ft_short_padneg(t_print *lst);
 int					ft_spstr_min(t_print *lst);
 int					ft_print(t_print *lst, char *str, int ret);
 int					ft_wstrlen(wchar_t *wstr);
+int					ft_putnwchar(wchar_t *str, int n);
+void				free_all(t_print *lst);
 
 /*
 ** strsub du % au tag de conversion

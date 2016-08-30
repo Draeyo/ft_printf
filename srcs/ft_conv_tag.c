@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 16:14:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 13:23:33 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 13:24:56 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void			lst_init(t_print *lst)
 	lst->zeroflag = ' ';
 	lst->zeroprec = 0;
 	lst->count = 0;
-	lst->str = ft_strnew(200);
-	lst->wstr = (wchar_t*)malloc(sizeof(wchar_t) * 200);
+	lst->str = NULL;
+	lst->wstr = NULL;
 	lst->wc = 0;
 	lst->min = 0;
+	lst->wdt = NULL;
+	lst->prc = NULL;
 }
 
 static int		ft_short_ctag(t_print *lst, int k)

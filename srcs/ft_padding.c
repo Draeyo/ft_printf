@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:09:39 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 14:38:50 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 14:28:38 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ char			*ft_strnew_digit(int nb, int fill)
 
 char			*ft_width(t_print *lst, int len)
 {
-	char	*width;
 	int		i;
 
+	if (CONV == 'S' && WSTR)
+		len = ft_wstrlen(WSTR);
 	if ((ft_strchr(FLAG, '+') || ft_strchr(FLAG, ' ')) && WIDTH > len
 			&& ft_plus(lst) && NEG == 0)
 		WIDTH--;
@@ -54,16 +55,15 @@ char			*ft_width(t_print *lst, int len)
 		return (NULL);
 	if (ft_strchr(FLAG, '-') && CONV != 's')
 		WIDTH -= PREC;
-	if (!(width = ft_strnew_digit(WIDTH, ZEROF)))
+	if (!(WDT = ft_strnew_digit(WIDTH, ZEROF)))
 		return (NULL);
 	if (ft_ishex(lst) && ft_strchr(FLAG, '0') && !ft_strchr(FLAG, '-'))
 		return (ft_short_hex(lst));
-	return (width);
+	return (WDT);
 }
 
 char			*ft_prec(t_print *lst, int len)
 {
-	char	*prec;
 	int		i;
 
 	i = 0;
@@ -73,6 +73,6 @@ char			*ft_prec(t_print *lst, int len)
 		PREC += 2;
 	if ((PREC -= len) <= 0)
 		return (NULL);
-	prec = ft_strnew_digit(PREC, '0');
-	return (prec);
+	PRC = ft_strnew_digit(PREC, '0');
+	return (PRC);
 }

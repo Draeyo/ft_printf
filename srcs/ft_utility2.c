@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 13:19:06 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 15:42:31 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 14:21:46 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		ft_print(t_print *lst, char *str, int ret)
 {
 	if (CONV == 's' || (CONV == 'S' && !WSTR))
 		ret += write(1, str, (PREC < LEN && PREC > 0) ? PREC : LEN);
+	else if ((CONV == 'S' && PREC && PREC < LEN))
+		ret += ft_putnwchar(WSTR, PREC);
 	else if (CONV == 'c' && *str == '\0')
 		ret += write(1, "\0", 1);
 	else if (!MODIF && CONV == 'c')
@@ -50,4 +52,20 @@ int		ft_wstrlen(wchar_t *wstr)
 			ret += 4;
 	}
 	return (ret);
+}
+
+void	free_all(t_print *lst)
+{
+	if (STR != NULL)
+		free(STR);
+	if (WDT)
+		free(WDT);
+	if (PRC)
+		free(PRC);
+	if (MODIF)
+		free(MODIF);
+	if (TAG)
+		free(TAG);
+	if (FLAG && FLAG[0] != '\0')
+		free(FLAG);
 }

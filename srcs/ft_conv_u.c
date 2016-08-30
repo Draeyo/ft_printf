@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 14:53:41 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/25 14:26:05 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 13:42:31 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int		ft_conv_jzu(va_list ap, t_print *lst)
 
 	ju = 0;
 	zu = 0;
-	if (lst->modif && ft_strstr(lst->modif, "j") && lst->conv == 'u')
+	if (MODIF && ft_strstr(lst->modif, "j") && CONV == 'u')
 	{
 		ju = va_arg(ap, uintmax_t);
 		return (ft_padding_uint(lst, ju));
 	}
-	else if (lst->modif && ft_strstr(lst->modif, "z") && lst->conv == 'u')
+	else if (MODIF && ft_strstr(MODIF, "z") && CONV == 'u')
 	{
 		zu = va_arg(ap, size_t);
 		return (ft_padding_uint(lst, zu));
@@ -39,12 +39,12 @@ static int		ft_conv_hu(va_list ap, t_print *lst)
 
 	hhu = 0;
 	hu = 0;
-	if (lst->modif && ft_strstr(lst->modif, "hh") && lst->conv == 'u')
+	if (MODIF && ft_strstr(MODIF, "hh") && CONV == 'u')
 	{
 		hhu = va_arg(ap, unsigned int);
 		return (ft_padding_uint(lst, hhu));
 	}
-	else if (lst->modif && ft_strstr(lst->modif, "h") && lst->conv == 'u')
+	else if (MODIF && ft_strstr(MODIF, "h") && CONV == 'u')
 	{
 		hu = va_arg(ap, unsigned int);
 		return (ft_padding_uint(lst, hu));
@@ -59,12 +59,12 @@ static int		ft_conv_lu(va_list ap, t_print *lst)
 
 	llu = 0;
 	lu = 0;
-	if (lst->modif && ft_strstr(lst->modif, "ll") && lst->conv == 'u')
+	if (MODIF && ft_strstr(MODIF, "ll") && CONV == 'u')
 	{
 		llu = va_arg(ap, unsigned long long);
 		return (ft_padding_uint(lst, llu));
 	}
-	else if ((lst->modif && ft_strstr(lst->modif, "l")) || lst->conv == 'U')
+	else if ((MODIF && ft_strstr(MODIF, "l")) || CONV == 'U')
 	{
 		lu = va_arg(ap, unsigned long);
 		return (ft_padding_uint(lst, lu));
@@ -79,7 +79,7 @@ int				ft_conv_u(va_list ap, t_print *lst)
 
 	u = 0;
 	count = 0;
-	if (lst->modif == NULL && lst->conv == 'u')
+	if (!MODIF && CONV == 'u')
 	{
 		u = va_arg(ap, unsigned int);
 		if (!u && ZEROP)

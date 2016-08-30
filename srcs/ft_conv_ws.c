@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:58:48 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/29 15:15:44 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 14:15:39 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_conv_wc(va_list ap, t_print *lst)
 	wint_t		wint;
 
 	wint = 0;
-	if ((CONV == 'C') || (ft_strstr(MODIF, "l") && CONV == 'c'))
+	if ((CONV == 'C') || (MODIF && ft_strstr(MODIF, "l") && CONV == 'c'))
 		wint = va_arg(ap, wint_t);
 	WC = wint;
 	LEN = 1;

@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 15:15:01 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/23 14:29:33 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/30 13:33:55 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ static int		ft_conv_jzx(va_list ap, t_print *lst)
 
 	jx = 0;
 	zx = 0;
-	if (lst->modif && ft_strstr(lst->modif, "j"))
+	if (MODIF && ft_strstr(MODIF, "j"))
 	{
 		jx = va_arg(ap, uintmax_t);
-		return (ft_padding_str(lst, ft_itohex(jx)));
+		STR = ft_itohex(jx);
+		return (ft_padding_str(lst, STR));
 	}
-	else if (lst->modif && ft_strstr(lst->modif, "z"))
+	else if (MODIF && ft_strstr(MODIF, "z"))
 	{
 		zx = va_arg(ap, size_t);
-		return (ft_padding_str(lst, ft_itohex(zx)));
+		STR = ft_itohex(zx);
+		return (ft_padding_str(lst, STR));
 	}
 	return (-1);
 }
@@ -39,15 +41,17 @@ static int		ft_conv_hx(va_list ap, t_print *lst)
 
 	hhx = 0;
 	hx = 0;
-	if (lst->modif && ft_strstr(lst->modif, "hh"))
+	if (MODIF && ft_strstr(MODIF, "hh"))
 	{
 		hhx = va_arg(ap, unsigned int);
-		return (ft_padding_str(lst, ft_itohex(hhx)));
+		STR = ft_itohex(hhx);
+		return (ft_padding_str(lst, STR));
 	}
-	else if (lst->modif && ft_strstr(lst->modif, "h"))
+	else if (MODIF && ft_strstr(MODIF, "h"))
 	{
 		hx = va_arg(ap, unsigned int);
-		return (ft_padding_str(lst, ft_itohex(hx)));
+		STR = ft_itohex(hx);
+		return (ft_padding_str(lst, STR));
 	}
 	return (-1);
 }
@@ -59,15 +63,17 @@ static int		ft_conv_lx(va_list ap, t_print *lst)
 
 	llx = 0;
 	lx = 0;
-	if (lst->modif && ft_strstr(lst->modif, "ll"))
+	if (MODIF && ft_strstr(MODIF, "ll"))
 	{
 		llx = va_arg(ap, unsigned long long);
-		return (ft_padding_str(lst, ft_itohex(llx)));
+		STR = ft_itohex(llx);
+		return (ft_padding_str(lst, STR));
 	}
-	else if (lst->modif && ft_strstr(lst->modif, "l"))
+	else if (MODIF && ft_strstr(MODIF, "l"))
 	{
 		lx = va_arg(ap, unsigned long);
-		return (ft_padding_str(lst, ft_itohex(lx)));
+		STR = ft_itohex(lx);
+		return (ft_padding_str(lst, STR));
 	}
 	return (-1);
 }
@@ -77,19 +83,20 @@ int				ft_conv_x(va_list ap, t_print *lst)
 	unsigned int	x;
 
 	x = 0;
-	if (ft_strchr(lst->flag, '#') && lst->conv == 'x')
+	if (ft_strchr(FLAG, '#') && CONV == 'x')
 		lst->hex = "0x";
-	else if (ft_strchr(lst->flag, '#') && lst->conv == 'X')
+	else if (ft_strchr(FLAG, '#') && CONV == 'X')
 		lst->hex = "0X";
-	if (lst->modif == NULL && (lst->conv == 'x' || lst->conv == 'X'))
+	if (!MODIF && (CONV == 'x' || CONV == 'X'))
 	{
 		x = va_arg(ap, unsigned int);
-		if (x == 0 && lst->zeroprec)
+		if (x == 0 && ZEROP)
 		{
-			lst->hex = "";
+			HEX = "";
 			return (ft_padding_str(lst, ""));
 		}
-		return (ft_padding_str(lst, ft_itohex(x)));
+		STR = ft_itohex(x);
+		return (ft_padding_str(lst, STR));
 	}
 	else if ((COUNT = ft_conv_hx(ap, lst)) > 0)
 		return (COUNT);
