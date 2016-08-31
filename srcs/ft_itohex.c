@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 13:33:22 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/25 12:16:29 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/31 09:15:22 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char		*ft_itohex(uintmax_t nb)
 	int		i;
 
 	str = ft_strnew(40);
-	pnt = str;
+	pnt = NULL;
 	i = 0;
 	if (nb == 0)
 		str[0] = '0';
@@ -46,7 +46,7 @@ char		*ft_itohex(uintmax_t nb)
 		nb /= 16;
 		i++;
 	}
-	str = ft_strrev(str);
-	free(pnt);
-	return (str);
+	pnt = ft_strrev(str);
+	free(str);
+	return (pnt);
 }

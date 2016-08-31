@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 19:37:37 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/30 14:38:55 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/31 10:05:07 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdio.h>
 # include <wchar.h>
 # include <limits.h>
 # include "libft.h"
@@ -41,7 +40,7 @@
 # define STR lst->str
 
 /*
-** strcture de recuperation du tag entier puis des elements du tag 1 par 1
+** strcture principale
 */
 typedef struct		s_print
 {

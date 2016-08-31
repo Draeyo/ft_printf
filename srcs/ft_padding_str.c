@@ -6,7 +6,7 @@
 /*   By: vlistrat <vlistrat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/17 14:26:16 by vlistrat          #+#    #+#             */
-/*   Updated: 2016/08/30 13:44:46 by vlistrat         ###   ########.fr       */
+/*   Updated: 2016/08/31 09:17:43 by vlistrat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int				ft_padding_str(t_print *lst, char *str)
 	ret = 0;
 	if (ft_zeroflag(lst) && ft_strchr(FLAG, '0') && !ft_strchr(FLAG, '-'))
 		ZEROF = '0';
-	else if ((CONV == 's' || CONV == 'S') && ft_strchr(FLAG, '0'))
+	else if ((CONV == 's' || CONV == 'S') && ft_strchr(FLAG, '0')
+			&& !ft_strchr(FLAG, '-'))
 		ZEROF = '0';
 	if (CONV == 'o' || CONV == 'O')
 		str = ft_diese_o(lst, str);
