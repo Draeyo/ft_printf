@@ -6,7 +6,7 @@
 #    By: vlistrat <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 13:19:26 by vlistrat          #+#    #+#              #
-#    Updated: 2016/08/29 14:15:06 by vlistrat         ###   ########.fr        #
+#    Updated: 2016/08/31 12:52:45 by vlistrat         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,17 +78,17 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@(ar rc $(NAME) $(OBJ) && ranlib $(NAME))
-	@(echo "$(NAME) created.")
+	@(echo "$(NAME) created. ✓")
 
 $(OBJ):
 	@(gcc -c $(SRC) -Wall -Werror -Wextra -I $(INC))
 
 clean:
 	@(/bin/rm -rf $(OBJ))
-	@(echo "libft/ folder cleaned.")
+	@(echo "libft/ folder cleaned. ✓")
 
 fclean: clean
 	@(/bin/rm -rf $(NAME))
-	@(echo "$(NAME) removed.")
+	@(echo "$(NAME) removed. ✓")
 
 re: fclean all

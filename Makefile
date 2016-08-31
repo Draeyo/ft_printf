@@ -38,20 +38,20 @@ all: $(NAME)
 
 $(NAME): makelibft $(OBJ)
 	@(ar rc $(NAME) $(OBJ) && ranlib $(NAME))
-	@(echo "$(NAME) created.")
+	@(echo "$(NAME) created. ✓")
 
 makelibft:
 	@(make -C libft/)
 
 clean:
 	@(/bin/rm -f $(OBJ))
-	@(echo "srcs/ folder cleaned.")
+	@(echo "srcs/ folder cleaned. ✓")
 	@(make -C libft/ clean)
 
 
 fclean: clean
 	@(/bin/rm -f $(NAME))
-	@(echo "$(NAME) deleted.")
+	@(echo "$(NAME) deleted. ✓")
 	@(make -C libft/ fclean)
 
 re: fclean all
